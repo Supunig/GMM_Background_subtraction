@@ -1,43 +1,20 @@
 #include "core.h"
 #include <hls_math.h>
 
-uint8_t mean[76800][4];
-uint8_t sigma[76800][4];
-float weight[76800][4];	//weight
-uint8_t vinit = 20;
+float vinit = 100;
 float F[4];	//Fitness
-float akt[4];//learning rate of mean and variance
+float akt[4];	//learning rate of mean and variance
 
-uint8_t matchsum[76800][4];
 float alpha_w = 0.005;
 
-int backsub(AXI_STREAM& inStream, AXI_STREAM_OUT& outStream, bool init) {
+int backsub(AXI_STREAM& inStream, AXI_STREAM_OUT& outStream, bool init,
+		float mean[76800][4], float sigma[76800][4], float weight[76800][4],
+		uint8_t matchsum[76800][4]) {
 //#pragma HLS INTERFACE bram port=frame
 #pragma HLS INTERFACE s_axilite port=init bundle=CRTL_BUS
 #pragma HLS INTERFACE axis port=outStream
 #pragma HLS INTERFACE axis port=inStream
 #pragma HLS INTERFACE s_axilite port=return bundle=CRTL_BUS
-	for (int i = 0; i < IMG_SIZE; i = i + 1) {
-		mean[i][0] = 0;
-		mean[i][1] = 0;
-		mean[i][2] = 0;
-		mean[i][3] = 0;
-
-		sigma[i][0] = 20;
-		sigma[i][1] = 20;
-		sigma[i][2] = 20;
-		sigma[i][3] = 20;
-
-		weight[i][0] = 0.05;
-		weight[i][1] = 0.05;
-		weight[i][2] = 0.05;
-		weight[i][3] = 0.05;
-
-		matchsum[i][0] = 0;
-		matchsum[i][1] = 0;
-		matchsum[i][2] = 0;
-		matchsum[i][3] = 0;
-	}
 
 	loop1: {
 		if (init) {
@@ -54,7 +31,7 @@ int backsub(AXI_STREAM& inStream, AXI_STREAM_OUT& outStream, bool init) {
 
 				tostruct(val, &pix);
 
-				if (!EM_ALGO(pix.y1, i))
+				if (!EM_ALGO(pix.y1, i, mean, sigma, weight, matchsum))
 					valOut1.data = 0;
 				else
 					valOut1.data = 255;
@@ -70,7 +47,7 @@ int backsub(AXI_STREAM& inStream, AXI_STREAM_OUT& outStream, bool init) {
 
 				outStream.write(valOut1);
 
-				if (!EM_ALGO(pix.y2, i + 1))
+				if (!EM_ALGO(pix.y2, i + 1, mean, sigma, weight, matchsum))
 					valOut2.data = 0;
 				else
 					valOut2.data = 255;
@@ -103,7 +80,7 @@ int backsub(AXI_STREAM& inStream, AXI_STREAM_OUT& outStream, bool init) {
 
 				tostruct(val, &pix);
 
-				if (!EM_ALGO(pix.y1, i))
+				if (!EM_ALGO(pix.y1, i, mean, sigma, weight, matchsum))
 					valOut1.data = 0;
 				else
 					valOut1.data = 255;
@@ -116,7 +93,7 @@ int backsub(AXI_STREAM& inStream, AXI_STREAM_OUT& outStream, bool init) {
 				valOut1.user = valIn.user;
 				outStream.write(valOut1);
 
-				if (!EM_ALGO(pix.y2, i + 1))
+				if (!EM_ALGO(pix.y2, i + 1, mean, sigma, weight, matchsum))
 					valOut2.data = 0;
 				else
 					valOut2.data = 255;
@@ -142,10 +119,15 @@ void tostruct(uint32_t val, yuv *yuv_struct) {
 	yuv_struct->v = 255 & (val >> 24);
 }
 
-bool EM_ALGO(uint8_t pixel, int pos) {
+bool EM_ALGO(uint8_t pixel, int pos, float mean[76800][4],
+		float sigma[76800][4], float weight[76800][4],
+		uint8_t matchsum[76800][4]) {
+
 	bool M[4] = { false, false, false, false };
+
+	//Checking whether the pixel is in 2.5sigma distance of every mean
 	for (int j = 0; j < 4; j++) {
-		if (abs(pixel - mean[pos][j]) < 2.5 * sigma[pos][j]) {
+		if (abs(pixel - mean[pos][j]) < 2.5 * hls::sqrtf(sigma[pos][j])) {
 			M[j] = true;
 		}
 		akt[j] = alpha_w / weight[pos][j];
@@ -154,51 +136,21 @@ bool EM_ALGO(uint8_t pixel, int pos) {
 
 	/*The Gaussian that matches with the pixel (M=1) and has the highest F value is
 	 considered as the “matched distribution” and its parameters are updated */
-	float sorted_F[4];
-	for (int i = 1; i < 4; i++) {
-		sorted_F[i] = F[i];
-	}
-
-	float sorted_weight[4];
-	for (int i = 1; i < 4; i++) {
-		sorted_weight[i] = weight[pos][i];
-	}
-
-	int index[4] = { 0, 1, 2, 3 };
-	int temp_F, temp_W, temp_index, j;
 
 	float max_F = 0;
 	float min_F = 1000;
 	int max_val = 10;
 	int min_val = 10;
-
-	for (int i = 1; i < 4; i++) {
-		temp_F = sorted_F[i];
-		temp_W = sorted_weight[i];
-		temp_index = index[i];
-		std::cout << temp_index << std::endl;
-		j = i - 1;
-		while (temp_F > sorted_F[j] && j >= 0)
-		/*To sort elements in descending order, change temp<data[j] to temp>data[j] in above line.*/
-		{
-			sorted_F[j + 1] = sorted_F[j];
-			sorted_weight[j + 1] = sorted_weight[j];
-			index[j + 1] = index[j];
-			--j;
-		}
-		sorted_F[j + 1] = temp_F;
-		sorted_weight[j + 1] = temp_W;
-		index[j + 1] = temp_index;
-	}
-
 	for (int j = 0; j < 4; j++) {
 		if (M[j]) {
 			if (F[j] > max_F) {
 				max_val = j;
+				max_F = F[j];
 			}
 		}
 		if (F[j] < min_F) {
 			min_val = j;
+			min_F = F[j];
 		}
 	}
 
@@ -208,7 +160,8 @@ bool EM_ALGO(uint8_t pixel, int pos) {
 		sigma[pos][max_val] = sigma[pos][max_val]
 				+ akt[max_val]
 						* ((pixel - mean[pos][max_val])
-								^ 2 - sigma[pos][max_val]);
+								* (pixel - mean[pos][max_val])
+								- sigma[pos][max_val]);
 		weight[pos][max_val] = weight[pos][max_val]
 				- alpha_w * weight[pos][max_val] + alpha_w;
 		matchsum[pos][max_val] = matchsum[pos][max_val] + 1;
@@ -232,9 +185,43 @@ bool EM_ALGO(uint8_t pixel, int pos) {
 				matchsumtot = matchsumtot + matchsum[pos][j]; // matchsumtot is the sum of the values of the matchsum of the K-1 Gaussians with highest F
 			}
 		}
+		if (matchsumtot != 0) {
+			weight[pos][min_val] = 1 / matchsumtot;
+		} else {
+			weight[pos][min_val] = 0.9;
+		}
+		return true; //not matched to any gaussian-> foreground
+	}
 
-		weight[pos][min_val] = matchsumtot;
-		return false; //not matched to any gaussian-> foreground
+	//creating a copy of weight and F to be sorted
+	float sorted_F[4];
+	for (int i = 0; i < 4; i++) {
+		sorted_F[i] = F[i];
+	}
+	float sorted_weight[4];
+	for (int i = 0; i < 4; i++) {
+		sorted_weight[i] = weight[pos][i];
+	}
+
+	int index[4] = { 0, 1, 2, 3 };
+	int temp_F, temp_W, temp_index, j;
+
+	//Sorting W according to F - descending order
+	for (int i = 1; i < 4; i++) {
+		temp_F = sorted_F[i];
+		temp_W = sorted_weight[i];
+		j = i - 1;
+		while (temp_F > sorted_F[j] && j >= 0)
+		/*To sort elements in descending order, change temp<data[j] to temp>data[j] in above line.*/
+		{
+			sorted_F[j + 1] = sorted_F[j];
+			sorted_weight[j + 1] = sorted_weight[j];
+			index[j + 1] = index[j];
+			--j;
+		}
+		sorted_F[j + 1] = temp_F;
+		sorted_weight[j + 1] = temp_W;
+		index[j + 1] = temp_index;
 	}
 
 //	float T = 0.7;
@@ -243,12 +230,12 @@ bool EM_ALGO(uint8_t pixel, int pos) {
 //		if (B < T) {
 //			B = B + sorted_weight[j];
 //			if (index[j] == max_val) {
-//				return false;
+//
 //			}
 //		} else {
-//			return true;
-//		}
 //
+//		}
 //	}
-	return true; //??????
+
+	return false; //Background
 }

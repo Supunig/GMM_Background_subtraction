@@ -1,1 +1,6 @@
-make: 'csim.exe' is up to date.
+   Compiling ../../../core.cpp in debug mode
+   Generating csim.exe
+/opt/Xilinx/Vivado_HLS/2014.4/lib/lnx64.o/libstdc++.so.6: version `GLIBCXX_3.4.20' not found (required by /usr/lib/x86_64-linux-gnu/libproxy.so.1)
+Failed to load module: /usr/lib/x86_64-linux-gnu/gio/modules/libgiolibproxy.so
+Device unmapped
+@I [SIM-1] CSim done with 0 errors.

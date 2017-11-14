@@ -2,11 +2,36 @@
 #include "core.h"
 
 //uint8_t bram_ar[76800] = { 0 };
+float mean[76800][4];
+float sigma[76800][4];
+float weight[76800][4];	//weight
+uint8_t matchsum[76800][4];
 
 cv::Mat outImg1(IMG_H, IMG_W, CV_8UC1);
 
 void execute(uint32_t *data_array, bool init);
 int main() {
+	for (int i = 0; i < IMG_SIZE; i = i + 1) {
+			mean[i][0] = 0;
+			mean[i][1] = 0;
+			mean[i][2] = 0;
+			mean[i][3] = 0;
+
+			sigma[i][0] = 100;
+			sigma[i][1] = 100;
+			sigma[i][2] = 100;
+			sigma[i][3] = 100;
+
+			weight[i][0] = 0.05;
+			weight[i][1] = 0.05;
+			weight[i][2] = 0.05;
+			weight[i][3] = 0.05;
+
+			matchsum[i][0] = 0;
+			matchsum[i][1] = 0;
+			matchsum[i][2] = 0;
+			matchsum[i][3] = 0;
+		}
 	// Initializing IP Core Ends here .........................
 
 	/******************Initializing V4L2 Driver Starts Here**********************/
@@ -185,7 +210,7 @@ for (int idxRow = 0; idxRow < IMG_H; idxRow++) {
 }
 
 AXI_STREAM_OUT outStream1;
-backsub(ch1, outStream1, init);
+backsub(ch1, outStream1, init, mean,sigma, weight,  matchsum);
 
 for (int idxRows = 0; idxRows < IMG_H; idxRows++) {
 	for (int idxCols = 0; idxCols < IMG_W; idxCols = idxCols + 2) {

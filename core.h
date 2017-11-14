@@ -17,8 +17,11 @@ typedef struct yuv {
 
 
 
-int backsub(AXI_STREAM& inStream, AXI_STREAM_OUT& outStream, bool init);
+int backsub(AXI_STREAM& inStream, AXI_STREAM_OUT& outStream, bool init, float mean[76800][4],
+		float sigma[76800][4],float weight[76800][4],uint8_t matchsum[76800][4]);
+
 
 void tostruct(uint32_t val, yuv *yuv_struct);
-bool EM_ALGO(uint8_t pixel,int pos);
+bool EM_ALGO(uint8_t pixel,int pos, float mean[76800][4],
+		float sigma[76800][4],float weight[76800][4],uint8_t matchsum[76800][4]);
 void YUV2RGB();
