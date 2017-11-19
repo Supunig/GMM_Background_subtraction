@@ -1,37 +1,15 @@
 #include "test_cam.h"
 #include "core.h"
 
-//uint8_t bram_ar[76800] = { 0 };
-float mean[76800][4];
-float sigma[76800][4];
-float weight[76800][4];	//weight
-uint8_t matchsum[76800][4];
+//uint8_t in_frame[76800] = { 0 };
+uint32_t data_array[IMG_H * IMG_W / 2];
+uint8_t out_frame[76800] = { 0 };
 
 cv::Mat outImg1(IMG_H, IMG_W, CV_8UC1);
 
 void execute(uint32_t *data_array, bool init);
 int main() {
-	for (int i = 0; i < IMG_SIZE; i = i + 1) {
-			mean[i][0] = 0;
-			mean[i][1] = 0;
-			mean[i][2] = 0;
-			mean[i][3] = 0;
 
-			sigma[i][0] = 100;
-			sigma[i][1] = 100;
-			sigma[i][2] = 100;
-			sigma[i][3] = 100;
-
-			weight[i][0] = 0.05;
-			weight[i][1] = 0.05;
-			weight[i][2] = 0.05;
-			weight[i][3] = 0.05;
-
-			matchsum[i][0] = 0;
-			matchsum[i][1] = 0;
-			matchsum[i][2] = 0;
-			matchsum[i][3] = 0;
-		}
 	// Initializing IP Core Ends here .........................
 
 	/******************Initializing V4L2 Driver Starts Here**********************/
@@ -112,7 +90,6 @@ int main() {
 	//auto begin = std::chrono::high_resolution_clock::now();
 	bool isFirst = true;
 
-	uint32_t data_array[IMG_H * IMG_W / 2];
 	bool init = 0;
 
 	for (int it = 0; it < 10000; it++) {
@@ -150,78 +127,88 @@ int main() {
 		}
 
 		execute(data_array, init);
+		uint8_t * ybuffer = new uint8_t[N];
+		for (int j = 0; j < N; j++) {
+			ybuffer[j] = buffer[2 * j];
+		}
+
+		cv::Mat img(240, 320, CV_8UC1, ybuffer);
+		//		cv::namedWindow("Live1");
+		//		cv::imshow("Live1", img);
 
 		if (it == 0) {
+			cv::namedWindow("Live1");
+			cv::imshow("Live1", img);
+
 			cv::namedWindow("Live2");
 			cv::imshow("Live2", outImg1);
 			cv::waitKey(0);
-	}else{
+		} else {
+			cv::namedWindow("Live1");
+			cv::imshow("Live1", img);
 
-	cv::namedWindow("Live2");
-	cv::imshow("Live2", outImg1);
-	if (cv::waitKey(1) >= 0)
-		break;
+			cv::namedWindow("Live2");
+			cv::imshow("Live2", outImg1);
+			if (cv::waitKey(1) >= 0)
+				break;
+		}
+
 	}
 
-//		uint8_t * ybuffer = new uint8_t[N];
-//		for (int j = 0; j < N; j++) {
-//			ybuffer[j] = buffer[2 * j];
-//		}
-//
-//
-//		cv::Mat img(240, 320, CV_8UC1, ybuffer);
-//		cv::namedWindow("Live1");
-//		cv::imshow("Live1", img);
-//
-//
+	if (ioctl(fd, VIDIOC_STREAMOFF, &type) < 0) {
+		perror("Could not end streaming, VIDIOC_STREAMOFF");
+		return 1;
+	}
 
-}
+	close(fd);
 
-if (ioctl(fd, VIDIOC_STREAMOFF, &type) < 0) {
-	perror("Could not end streaming, VIDIOC_STREAMOFF");
-	return 1;
-}
+	printf("Device unmapped\n");
 
-close(fd);
-
-printf("Device unmapped\n");
-
-return 0;
+	return 0;
 }
 
 void execute(uint32_t *data_array, bool init) {
-AXI_STREAM ch1;
 
-for (int idxRow = 0; idxRow < IMG_H; idxRow++) {
-	for (int idxCols = 0; idxCols < IMG_W / 2; idxCols++) {
-		ap_axiu<32, 1, 1, 1> valIn;
-		valIn.data = data_array[idxRow * IMG_W / 2 + idxCols];
-		valIn.keep = 1;
-		valIn.strb = 1;
-		valIn.user = 1;
-		valIn.id = 1;
-		valIn.dest = 1;
-		if (idxRow == IMG_H - 1 && idxCols == IMG_W / 2 - 1)
-			valIn.last = 1;
-		else
-			valIn.last = 0;
-		ch1 << valIn;
+	backsub(data_array, out_frame,init);
+	for (int idxRows = 0; idxRows < IMG_H; idxRows++) {
+		for (int idxCols = 0; idxCols < IMG_W; idxCols = idxCols + 1) {
+			outImg1.at<unsigned char>(idxRows, idxCols) = out_frame[idxRows
+					* IMG_W + idxCols];
+		}
 	}
-}
 
-AXI_STREAM_OUT outStream1;
-backsub(ch1, outStream1, init, mean,sigma, weight,  matchsum);
-
-for (int idxRows = 0; idxRows < IMG_H; idxRows++) {
-	for (int idxCols = 0; idxCols < IMG_W; idxCols = idxCols + 2) {
-		ap_axiu<8, 1, 1, 1> valOut1;
-		ap_axiu<8, 1, 1, 1> valOut2;
-		outStream1.read(valOut1);
-		outStream1.read(valOut2);
-		outImg1.at<unsigned char>(idxRows, idxCols) = valOut1.data;	//.to_uchar();
-		outImg1.at<unsigned char>(idxRows, idxCols + 1) = valOut2.data;	//.to_uchar();
-	}
-}
+//AXI_STREAM ch1;
+//
+//for (int idxRow = 0; idxRow < IMG_H; idxRow++) {
+//	for (int idxCols = 0; idxCols < IMG_W / 2; idxCols++) {
+//		ap_axiu<32, 1, 1, 1> valIn;
+//		valIn.data = data_array[idxRow * IMG_W / 2 + idxCols];
+//		valIn.keep = 1;
+//		valIn.strb = 1;
+//		valIn.user = 1;
+//		valIn.id = 1;
+//		valIn.dest = 1;
+//		if (idxRow == IMG_H - 1 && idxCols == IMG_W / 2 - 1)
+//			valIn.last = 1;
+//		else
+//			valIn.last = 0;
+//		ch1 << valIn;
+//	}
+//}
+//
+//AXI_STREAM_OUT outStream1;
+//backsub(ch1, outStream1, init, mean,sigma, weight,  matchsum, back_gauss);
+//
+//for (int idxRows = 0; idxRows < IMG_H; idxRows++) {
+//	for (int idxCols = 0; idxCols < IMG_W; idxCols = idxCols + 2) {
+//		ap_axiu<8, 1, 1, 1> valOut1;
+//		ap_axiu<8, 1, 1, 1> valOut2;
+//		outStream1.read(valOut1);
+//		outStream1.read(valOut2);
+//		outImg1.at<unsigned char>(idxRows, idxCols) = valOut1.data;	//.to_uchar();
+//		outImg1.at<unsigned char>(idxRows, idxCols + 1) = valOut2.data;	//.to_uchar();
+//	}
+//}
 
 }
 

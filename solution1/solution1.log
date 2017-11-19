@@ -7,5 +7,122 @@ Copyright (C) 2014 Xilinx Inc. All rights reserved.
 
 @I [SYN-201] Setting up clock 'default' with a period of 10ns.
 @I [HLS-10] Setting target device to 'xc7z020clg484-1'
-@I [SIM-1] CSim done with 0 errors.
+@I [HLS-10] Analyzing design file 'Background_Subtraction_with_GMM/core.cpp' ... 
+In file included from Background_Subtraction_with_GMM/core.cpp:1:
+Background_Subtraction_with_GMM/core.h:11:1: warning: declaration does not declare anything [-Wmissing-declarations]
+typedef struct yuv {
+^~~~~~~
+1 warning generated.
+@I [HLS-10] Validating synthesis directives ...
+@I [HLS-10] Starting code transformations ...
+@I [XFORM-603] Inlining function 'ap_fixed_base<78, 55, false, (ap_q_mode)5, (ap_o_mode)3, 0>::operator<<' into 'hls::cast_IEEE754<int, float>' (/proj/buildscratch/builds/2014.4/continuous/20141118161353/src/products/hls/hls_lib/src/hls/hls_round.h:371).
+@I [XFORM-603] Inlining function 'ap_fixed_base<1, 33, false, (ap_q_mode)5, (ap_o_mode)0, 0>::overflow_adjust' into 'ap_fixed_base<1, 33, false, (ap_q_mode)5, (ap_o_mode)0, 0>::ap_fixed_base<55, 55, false, (ap_q_mode)5, (ap_o_mode)3, 0>' ().
+@I [HLS-10] Checking synthesizability ...
+@I [XFORM-602] Inlining function 'fp_struct<float>::mantissa' into 'hls::cast_IEEE754<int, float>' (/proj/buildscratch/builds/2014.4/continuous/20141118161353/src/products/hls/hls_lib/src/hls/hls_round.h:368) automatically.
+@I [XFORM-602] Inlining function 'fp_struct<float>::expv' into 'hls::cast_IEEE754<int, float>' (/proj/buildscratch/builds/2014.4/continuous/20141118161353/src/products/hls/hls_lib/src/hls/hls_round.h:371) automatically.
+@I [XFORM-602] Inlining function 'fp_struct<float>::__signbit' into 'hls::cast_IEEE754<int, float>' (/proj/buildscratch/builds/2014.4/continuous/20141118161353/src/products/hls/hls_lib/src/hls/hls_round.h:383) automatically.
+@I [XFORM-602] Inlining function '__hls_fptosi_float_i32' into 'EM_ALGO' (Background_Subtraction_with_GMM/core.cpp:207) automatically.
+@I [XFORM-602] Inlining function 'hls::sqrtf' into 'EM_ALGO' (Background_Subtraction_with_GMM/core.cpp:207) automatically.
+@I [XFORM-602] Inlining function 'tostruct' into 'backsub' (Background_Subtraction_with_GMM/core.cpp:103) automatically.
+@I [XFORM-102] Automatically partitioning small array 'M' (Background_Subtraction_with_GMM/core.cpp:203) completely based on array size.
+@I [XFORM-102] Automatically partitioning small array 'sorted_F' (Background_Subtraction_with_GMM/core.cpp:276) completely based on array size.
+@I [XFORM-102] Automatically partitioning small array 'sorted_weight' (Background_Subtraction_with_GMM/core.cpp:280) completely based on array size.
+@I [XFORM-102] Automatically partitioning small array 'index' (Background_Subtraction_with_GMM/core.cpp:286) completely based on array size.
+@I [XFORM-101] Partitioning array 'M' (Background_Subtraction_with_GMM/core.cpp:203) in dimension 1 completely.
+@I [XFORM-101] Partitioning array 'sorted_F' (Background_Subtraction_with_GMM/core.cpp:276) in dimension 1 completely.
+@I [XFORM-101] Partitioning array 'sorted_weight' (Background_Subtraction_with_GMM/core.cpp:280) in dimension 1 completely.
+@I [XFORM-101] Partitioning array 'index' (Background_Subtraction_with_GMM/core.cpp:286) in dimension 1 completely.
+@I [XFORM-602] Inlining function 'fp_struct<float>::mantissa' into 'hls::cast_IEEE754<int, float>' (/proj/buildscratch/builds/2014.4/continuous/20141118161353/src/products/hls/hls_lib/src/hls/hls_round.h:368) automatically.
+@I [XFORM-602] Inlining function 'fp_struct<float>::expv' into 'hls::cast_IEEE754<int, float>' (/proj/buildscratch/builds/2014.4/continuous/20141118161353/src/products/hls/hls_lib/src/hls/hls_round.h:371) automatically.
+@I [XFORM-602] Inlining function 'fp_struct<float>::__signbit' into 'hls::cast_IEEE754<int, float>' (/proj/buildscratch/builds/2014.4/continuous/20141118161353/src/products/hls/hls_lib/src/hls/hls_round.h:383) automatically.
+@I [XFORM-602] Inlining function 'hls::cast_IEEE754<int, float>' into '__hls_fptosi_float_i32' (/proj/buildscratch/builds/2014.4/continuous/20141118161353/src/products/hls/hls_lib/src/lib_floatconversion.cpp:39) automatically.
+@I [XFORM-602] Inlining function '__hls_fptosi_float_i32' into 'EM_ALGO' (Background_Subtraction_with_GMM/core.cpp:207) automatically.
+@I [XFORM-602] Inlining function 'hls::sqrtf' into 'EM_ALGO' (Background_Subtraction_with_GMM/core.cpp:207) automatically.
+@I [XFORM-602] Inlining function 'tostruct' into 'backsub' (Background_Subtraction_with_GMM/core.cpp:103) automatically.
+@I [XFORM-401] Performing if-conversion on hyperblock from (Background_Subtraction_with_GMM/core.cpp:207:8) to (Background_Subtraction_with_GMM/core.cpp:206:25) in function 'EM_ALGO'... converting 10 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock from (Background_Subtraction_with_GMM/core.cpp:223:3) to (Background_Subtraction_with_GMM/core.cpp:222:25) in function 'EM_ALGO'... converting 8 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock from (Background_Subtraction_with_GMM/core.cpp:278:3) to (Background_Subtraction_with_GMM/core.cpp:277:25) in function 'EM_ALGO'... converting 5 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock from (Background_Subtraction_with_GMM/core.cpp:282:3) to (Background_Subtraction_with_GMM/core.cpp:281:25) in function 'EM_ALGO'... converting 5 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock in function 'EM_ALGO'... converting 18 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock to (Background_Subtraction_with_GMM/core.cpp:295:3) in function 'EM_ALGO'... converting 10 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock to (Background_Subtraction_with_GMM/core.cpp:290:25) in function 'EM_ALGO'... converting 13 basic blocks.
+@I [XFORM-401] Performing if-conversion on hyperblock to (Background_Subtraction_with_GMM/core.cpp:319:3) in function 'EM_ALGO'... converting 9 basic blocks.
+@W [XFORM-562] Loop 'Loop-9' (Background_Subtraction_with_GMM/core.cpp:316) in function 'EM_ALGO' has unknown bound because it has multiple exiting blocks.
+@I [HLS-111] Elapsed time: 6.11794 seconds; current memory usage: 297 MB.
+@I [HLS-10] Starting hardware synthesis ...
+@I [HLS-10] Synthesizing 'backsub' ...
+@I [HLS-10] ----------------------------------------------------------------
+@I [HLS-10] -- Scheduling module 'backsub_EM_ALGO' 
+@I [HLS-10] ----------------------------------------------------------------
+@I [SCHED-11] Starting scheduling ...
+@I [SCHED-11] Finished scheduling.
+@I [HLS-111] Elapsed time: 0.524408 seconds; current memory usage: 300 MB.
+@I [HLS-10] ----------------------------------------------------------------
+@I [HLS-10] -- Exploring micro-architecture for module 'backsub_EM_ALGO' 
+@I [HLS-10] ----------------------------------------------------------------
+@I [BIND-100] Starting micro-architecture generation ...
+@I [BIND-101] Performing variable lifetime analysis.
+@I [BIND-101] Exploring resource sharing.
+@I [BIND-101] Binding ...
+@I [BIND-100] Finished micro-architecture generation.
+@I [HLS-111] Elapsed time: 0.172262 seconds; current memory usage: 302 MB.
+@I [HLS-10] ----------------------------------------------------------------
+@I [HLS-10] -- Scheduling module 'backsub' 
+@I [HLS-10] ----------------------------------------------------------------
+@I [SCHED-11] Starting scheduling ...
+@I [SCHED-11] Finished scheduling.
+@I [HLS-111] Elapsed time: 0.236221 seconds; current memory usage: 303 MB.
+@I [HLS-10] ----------------------------------------------------------------
+@I [HLS-10] -- Exploring micro-architecture for module 'backsub' 
+@I [HLS-10] ----------------------------------------------------------------
+@I [BIND-100] Starting micro-architecture generation ...
+@I [BIND-101] Performing variable lifetime analysis.
+@I [BIND-101] Exploring resource sharing.
+@I [BIND-101] Binding ...
+@I [BIND-100] Finished micro-architecture generation.
+@I [HLS-111] Elapsed time: 0.04666 seconds; current memory usage: 303 MB.
+@I [HLS-10] ----------------------------------------------------------------
+@I [HLS-10] -- Generating RTL for module 'backsub_EM_ALGO' 
+@I [HLS-10] ----------------------------------------------------------------
+@I [RTGEN-100] Generating core module 'backsub_dcmp_64ns_64ns_1_1': 1 instance(s).
+@I [RTGEN-100] Generating core module 'backsub_dmul_64ns_64ns_64_6_max_dsp': 1 instance(s).
+@I [RTGEN-100] Generating core module 'backsub_fadd_32ns_32ns_32_5_full_dsp': 1 instance(s).
+@I [RTGEN-100] Generating core module 'backsub_faddfsub_32ns_32ns_32_5_full_dsp': 1 instance(s).
+@I [RTGEN-100] Generating core module 'backsub_fcmp_32ns_32ns_1_1': 2 instance(s).
+@I [RTGEN-100] Generating core module 'backsub_fdiv_32ns_32ns_32_16': 2 instance(s).
+@I [RTGEN-100] Generating core module 'backsub_fmul_32ns_32ns_32_4_max_dsp': 1 instance(s).
+@I [RTGEN-100] Generating core module 'backsub_fpext_32ns_64_1': 1 instance(s).
+@I [RTGEN-100] Generating core module 'backsub_fsqrt_32ns_32ns_32_12': 1 instance(s).
+@I [RTGEN-100] Generating core module 'backsub_sitodp_32ns_64_6': 1 instance(s).
+@I [RTGEN-100] Generating core module 'backsub_sitofp_32ns_32_6': 1 instance(s).
+@I [RTGEN-100] Generating core module 'backsub_uitofp_8ns_32_6': 1 instance(s).
+@I [RTGEN-100] Finished creating RTL model for 'backsub_EM_ALGO'.
+@I [HLS-111] Elapsed time: 0.221968 seconds; current memory usage: 307 MB.
+@I [HLS-10] ----------------------------------------------------------------
+@I [HLS-10] -- Generating RTL for module 'backsub' 
+@I [HLS-10] ----------------------------------------------------------------
+@I [RTGEN-500] Setting interface mode on port 'backsub/data_array' to 'ap_memory'.
+@I [RTGEN-500] Setting interface mode on port 'backsub/out_frame' to 'ap_memory'.
+@I [RTGEN-500] Setting interface mode on port 'backsub/init' to 'ap_none'.
+@I [RTGEN-500] Setting interface mode on function 'backsub' to 'ap_ctrl_hs'.
+@W [RTGEN-101] Global array 'mean' will not be exposed as RTL port.
+@W [RTGEN-101] Global array 'sigma' will not be exposed as RTL port.
+@W [RTGEN-101] Global array 'weight' will not be exposed as RTL port.
+@W [RTGEN-101] Global array 'matchsum' will not be exposed as RTL port.
+@W [RTGEN-101] Global array 'back_gauss' will not be exposed as RTL port.
+@W [RTGEN-101] Global scalar 'alpha_w' will not be exposed as RTL port.
+@W [RTGEN-101] Global array 'akt' will not be exposed as RTL port.
+@W [RTGEN-101] Global array 'F' will not be exposed as RTL port.
+@W [RTGEN-101] Global scalar 'vinit' will not be exposed as RTL port.
+@I [RTGEN-100] Finished creating RTL model for 'backsub'.
+@I [HLS-111] Elapsed time: 0.452048 seconds; current memory usage: 317 MB.
+@I [RTMG-278] Implementing memory 'backsub_EM_ALGO_akt_ram' using distributed RAMs with power-on initialization.
+@I [RTMG-278] Implementing memory 'backsub_mean_ram' using block RAMs with power-on initialization.
+@I [RTMG-278] Implementing memory 'backsub_matchsum_ram' using block RAMs with power-on initialization.
+@I [RTMG-278] Implementing memory 'backsub_back_gauss_ram' using block RAMs with power-on initialization.
+@I [HLS-10] Finished generating all RTL models.
+@I [WSYSC-301] Generating RTL SystemC for 'backsub'.
+@I [WVHDL-304] Generating RTL VHDL for 'backsub'.
+@I [WVLOG-307] Generating RTL Verilog for 'backsub'.
+@I [HLS-112] Total elapsed time: 108.14 seconds; peak memory usage: 317 MB.
 @I [LIC-101] Checked in feature [HLS]

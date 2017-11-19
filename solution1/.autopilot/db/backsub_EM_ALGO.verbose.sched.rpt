@@ -1,0 +1,2849 @@
+
+
+================================================================
+== Vivado HLS Report for 'backsub_EM_ALGO'
+================================================================
+* Date:           Sun Nov 19 18:26:41 2017
+
+* Version:        2014.4 (Build 1071461 on Tue Nov 18 16:42:57 PM 2014)
+* Project:        Background_Subtraction_with_GMM
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +---------+-------+----------+------------+
+    |  Clock  | Target| Estimated| Uncertainty|
+    +---------+-------+----------+------------+
+    |default  |  10.00|      8.46|        1.25|
+    +---------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    ?|    ?|    ?|    ?|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------+-----+-----+----------+-----------+-----------+------+----------+
+        |             |  Latency  | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name  | min | max |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------+-----+-----+----------+-----------+-----------+------+----------+
+        |- memset_M   |    7|    7|         2|          -|          -|     4|    no    |
+        |- Loop 2     |   92|   92|        23|          -|          -|     4|    no    |
+        |- Loop 3     |   16|   16|         4|          -|          -|     4|    no    |
+        |- Loop 4     |    8|   32|   2 ~ 8  |          -|          -|     4|    no    |
+        |- Loop 5     |    8|   56|  2 ~ 14  |          -|          -|     4|    no    |
+        |- Loop 6     |    8|    8|         2|          -|          -|     4|    no    |
+        |- Loop 7     |    8|    8|         2|          -|          -|     4|    no    |
+        |- Loop 8     |    ?|    ?|         ?|          -|          -|     3|    no    |
+        | + Loop 8.1  |    ?|    ?|         3|          -|          -|     ?|    no    |
+        |- Loop 9     |    ?|    ?|         7|          -|          -|     ?|    no    |
+        +-------------+-----+-----+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  |
++-----------------+---------+-------+--------+-------+
+|Expression       |        -|      -|       -|      -|
+|FIFO             |        -|      -|       -|      -|
+|Instance         |        -|      -|       -|      -|
+|Memory           |        -|      -|       -|      -|
+|Multiplexer      |        -|      -|       -|      -|
+|Register         |        -|      -|       -|      -|
++-----------------+---------+-------+--------+-------+
+|Total            |        0|      0|       0|      0|
++-----------------+---------+-------+--------+-------+
+|Available        |      280|    220|  106400|  53200|
++-----------------+---------+-------+--------+-------+
+|Utilization (%)  |        0|      0|       0|      0|
++-----------------+---------+-------+--------+-------+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    N/A
+
+    * Multiplexer: 
+    N/A
+
+    * Register: 
+    N/A
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
+N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states: 133
+* Pipeline: 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / true
+3 --> 
+	2  / (!tmp_s)
+	4  / (tmp_s)
+4 --> 
+	5  / true
+5 --> 
+	6  / true
+6 --> 
+	7  / true
+7 --> 
+	8  / true
+8 --> 
+	9  / true
+9 --> 
+	10  / (!exitcond6)
+	32  / (exitcond6)
+10 --> 
+	11  / true
+11 --> 
+	12  / true
+12 --> 
+	13  / true
+13 --> 
+	14  / true
+14 --> 
+	15  / true
+15 --> 
+	16  / true
+16 --> 
+	17  / true
+17 --> 
+	18  / true
+18 --> 
+	19  / true
+19 --> 
+	20  / true
+20 --> 
+	21  / true
+21 --> 
+	22  / true
+22 --> 
+	23  / true
+23 --> 
+	24  / true
+24 --> 
+	25  / true
+25 --> 
+	26  / true
+26 --> 
+	27  / true
+27 --> 
+	28  / true
+28 --> 
+	29  / true
+29 --> 
+	30  / true
+30 --> 
+	31  / true
+31 --> 
+	9  / true
+32 --> 
+	33  / (!exitcond5)
+	36  / (exitcond5 & !icmp)
+	71  / (exitcond5 & icmp)
+33 --> 
+	34  / true
+34 --> 
+	35  / true
+35 --> 
+	32  / true
+36 --> 
+	37  / true
+37 --> 
+	38  / true
+38 --> 
+	39  / true
+39 --> 
+	40  / true
+40 --> 
+	41  / true
+41 --> 
+	42  / true
+42 --> 
+	43  / (!exitcond3 & !tmp_52)
+	55  / (!exitcond3 & tmp_52)
+	56  / (exitcond3 & !tmp_70)
+	70  / (exitcond3 & tmp_70)
+43 --> 
+	44  / true
+44 --> 
+	45  / true
+45 --> 
+	46  / true
+46 --> 
+	47  / true
+47 --> 
+	48  / true
+48 --> 
+	49  / true
+49 --> 
+	50  / true
+50 --> 
+	51  / true
+51 --> 
+	52  / true
+52 --> 
+	53  / true
+53 --> 
+	54  / true
+54 --> 
+	55  / true
+55 --> 
+	42  / true
+56 --> 
+	57  / true
+57 --> 
+	58  / true
+58 --> 
+	59  / true
+59 --> 
+	60  / true
+60 --> 
+	61  / true
+61 --> 
+	62  / true
+62 --> 
+	63  / true
+63 --> 
+	64  / true
+64 --> 
+	65  / true
+65 --> 
+	66  / true
+66 --> 
+	67  / true
+67 --> 
+	68  / true
+68 --> 
+	69  / true
+69 --> 
+	70  / true
+70 --> 
+	133  / true
+71 --> 
+	72  / true
+72 --> 
+	73  / true
+73 --> 
+	74  / true
+74 --> 
+	75  / true
+75 --> 
+	76  / true
+76 --> 
+	77  / true
+77 --> 
+	78  / true
+78 --> 
+	79  / true
+79 --> 
+	80  / true
+80 --> 
+	81  / true
+81 --> 
+	82  / true
+82 --> 
+	83  / true
+83 --> 
+	84  / true
+84 --> 
+	85  / true
+85 --> 
+	86  / true
+86 --> 
+	87  / true
+87 --> 
+	88  / true
+88 --> 
+	89  / true
+89 --> 
+	90  / true
+90 --> 
+	91  / true
+91 --> 
+	92  / true
+92 --> 
+	93  / true
+93 --> 
+	94  / true
+94 --> 
+	95  / true
+95 --> 
+	96  / true
+96 --> 
+	97  / true
+97 --> 
+	98  / true
+98 --> 
+	99  / true
+99 --> 
+	100  / true
+100 --> 
+	101  / true
+101 --> 
+	102  / true
+102 --> 
+	103  / true
+103 --> 
+	104  / true
+104 --> 
+	105  / true
+105 --> 
+	106  / true
+106 --> 
+	107  / true
+107 --> 
+	108  / true
+108 --> 
+	109  / true
+109 --> 
+	110  / true
+110 --> 
+	118  / (exitcond4)
+	111  / (!exitcond4 & !tmp_50)
+	117  / (!exitcond4 & tmp_50)
+111 --> 
+	112  / true
+112 --> 
+	113  / true
+113 --> 
+	114  / true
+114 --> 
+	115  / true
+115 --> 
+	116  / true
+116 --> 
+	117  / true
+117 --> 
+	110  / true
+118 --> 
+	119  / (!exitcond2)
+	120  / (exitcond2)
+119 --> 
+	118  / true
+120 --> 
+	121  / (!exitcond1)
+	122  / (exitcond1)
+121 --> 
+	120  / true
+122 --> 
+	126  / (exitcond)
+	123  / (!exitcond)
+123 --> 
+	124  / true
+124 --> 
+	125  / true
+125 --> 
+	123  / (tmp_69)
+	122  / (!tmp_69)
+126 --> 
+	127  / true
+127 --> 
+	128  / (!tmp_107)
+	133  / (tmp_107)
+128 --> 
+	129  / true
+129 --> 
+	130  / true
+130 --> 
+	131  / true
+131 --> 
+	132  / true
+132 --> 
+	133  / true
+133 --> 
+	127  / (icmp & !tmp_107 & !tmp_79)
+* FSM state operations: 
+
+ <State 1>: 1.57ns
+ST_1: M [1/1] 0.00ns
+:0  %M = alloca i1, align 1
+
+ST_1: M_1 [1/1] 0.00ns
+:1  %M_1 = alloca i1, align 1
+
+ST_1: M_2 [1/1] 0.00ns
+:2  %M_2 = alloca i1, align 1
+
+ST_1: M_3 [1/1] 0.00ns
+:3  %M_3 = alloca i1, align 1
+
+ST_1: pos_read [1/1] 1.04ns
+:4  %pos_read = call i17 @_ssdm_op_Read.ap_auto.i17(i17 %pos_r)
+
+ST_1: pixel_read [1/1] 1.04ns
+:5  %pixel_read = call i8 @_ssdm_op_Read.ap_auto.i8(i8 %pixel)
+
+ST_1: stg_140 [1/1] 1.57ns
+:6  br label %meminst
+
+
+ <State 2>: 1.88ns
+ST_2: invdar [1/1] 0.00ns
+meminst:0  %invdar = phi i2 [ 0, %0 ], [ %indvarinc, %meminst65 ]
+
+ST_2: indvarinc [1/1] 0.80ns
+meminst:1  %indvarinc = add i2 %invdar, 1
+
+ST_2: stg_143 [1/1] 1.88ns
+meminst:2  switch i2 %invdar, label %branch11 [
+    i2 0, label %meminst65.pre
+    i2 1, label %branch9
+    i2 -2, label %branch10
+  ]
+
+ST_2: stg_144 [1/1] 0.00ns
+branch10:0  store i1 false, i1* %M_2, align 1
+
+ST_2: stg_145 [1/1] 0.00ns
+branch10:1  br label %meminst65
+
+ST_2: stg_146 [1/1] 0.00ns
+branch9:0  store i1 false, i1* %M_1, align 1
+
+ST_2: stg_147 [1/1] 0.00ns
+branch9:1  br label %meminst65
+
+ST_2: stg_148 [1/1] 0.00ns
+meminst65.pre:0  store i1 false, i1* %M, align 1
+
+ST_2: stg_149 [1/1] 0.00ns
+meminst65.pre:1  br label %meminst65
+
+ST_2: stg_150 [1/1] 0.00ns
+branch11:0  store i1 false, i1* %M_3, align 1
+
+ST_2: stg_151 [1/1] 0.00ns
+branch11:1  br label %meminst65
+
+ST_2: tmp_s [1/1] 1.36ns
+meminst65:4  %tmp_s = icmp eq i2 %invdar, -1
+
+
+ <State 3>: 6.41ns
+ST_3: M_load [1/1] 0.00ns
+meminst65:0  %M_load = load i1* %M, align 1
+
+ST_3: M_1_load [1/1] 0.00ns
+meminst65:1  %M_1_load = load i1* %M_1, align 1
+
+ST_3: M_2_load [1/1] 0.00ns
+meminst65:2  %M_2_load = load i1* %M_2, align 1
+
+ST_3: M_3_load [1/1] 0.00ns
+meminst65:3  %M_3_load = load i1* %M_3, align 1
+
+ST_3: empty [1/1] 0.00ns
+meminst65:5  %empty = call i32 (...)* @_ssdm_op_SpecLoopName([9 x i8]* @str1) nounwind
+
+ST_3: empty_18 [1/1] 0.00ns
+meminst65:6  %empty_18 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 4, i64 4, i64 4)
+
+ST_3: stg_159 [1/1] 0.00ns
+meminst65:7  br i1 %tmp_s, label %1, label %meminst
+
+ST_3: tmp_20 [1/1] 0.00ns
+:0  %tmp_20 = zext i8 %pixel_read to i32
+
+ST_3: tmp_21 [6/6] 6.41ns
+:1  %tmp_21 = sitofp i32 %tmp_20 to float
+
+
+ <State 4>: 6.41ns
+ST_4: tmp_21 [5/6] 6.41ns
+:1  %tmp_21 = sitofp i32 %tmp_20 to float
+
+
+ <State 5>: 6.41ns
+ST_5: tmp_21 [4/6] 6.41ns
+:1  %tmp_21 = sitofp i32 %tmp_20 to float
+
+
+ <State 6>: 6.41ns
+ST_6: tmp_21 [3/6] 6.41ns
+:1  %tmp_21 = sitofp i32 %tmp_20 to float
+
+
+ <State 7>: 6.41ns
+ST_7: tmp_21 [2/6] 6.41ns
+:1  %tmp_21 = sitofp i32 %tmp_20 to float
+
+
+ <State 8>: 6.41ns
+ST_8: tmp_21 [1/6] 6.41ns
+:1  %tmp_21 = sitofp i32 %tmp_20 to float
+
+ST_8: tmp_27 [1/1] 0.00ns
+:2  %tmp_27 = call i19 @_ssdm_op_BitConcatenate.i19.i17.i2(i17 %pos_read, i2 0)
+
+ST_8: p_addr6 [1/1] 0.00ns
+:3  %p_addr6 = zext i19 %tmp_27 to i32
+
+ST_8: p_addr6_cast [1/1] 0.00ns
+:4  %p_addr6_cast = zext i19 %tmp_27 to i20
+
+ST_8: stg_170 [1/1] 1.57ns
+:5  br label %2
+
+
+ <State 9>: 4.47ns
+ST_9: M_3_2 [1/1] 0.00ns
+:0  %M_3_2 = phi i1 [ %M_3_load, %1 ], [ %M_3_4, %_ifconv ]
+
+ST_9: M_2_2 [1/1] 0.00ns
+:1  %M_2_2 = phi i1 [ %M_2_load, %1 ], [ %M_2_4, %_ifconv ]
+
+ST_9: M_1_2 [1/1] 0.00ns
+:2  %M_1_2 = phi i1 [ %M_1_load, %1 ], [ %M_1_4, %_ifconv ]
+
+ST_9: M_0_2 [1/1] 0.00ns
+:3  %M_0_2 = phi i1 [ %M_load, %1 ], [ %M_0_4, %_ifconv ]
+
+ST_9: j [1/1] 0.00ns
+:4  %j = phi i3 [ 0, %1 ], [ %j_1, %_ifconv ]
+
+ST_9: exitcond6 [1/1] 1.62ns
+:5  %exitcond6 = icmp eq i3 %j, -4
+
+ST_9: empty_19 [1/1] 0.00ns
+:6  %empty_19 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 4, i64 4, i64 4)
+
+ST_9: j_1 [1/1] 0.80ns
+:7  %j_1 = add i3 %j, 1
+
+ST_9: stg_179 [1/1] 1.57ns
+:8  br i1 %exitcond6, label %.preheader8, label %_ifconv
+
+ST_9: tmp_23_trn_cast [1/1] 0.00ns
+_ifconv:1  %tmp_23_trn_cast = zext i3 %j to i20
+
+ST_9: p_addr7 [1/1] 2.08ns
+_ifconv:2  %p_addr7 = add i20 %p_addr6_cast, %tmp_23_trn_cast
+
+ST_9: tmp_31 [1/1] 0.00ns
+_ifconv:3  %tmp_31 = zext i20 %p_addr7 to i64
+
+ST_9: mean_addr [1/1] 0.00ns
+_ifconv:4  %mean_addr = getelementptr [307200 x float]* %mean, i64 0, i64 %tmp_31
+
+ST_9: mean_load [2/2] 2.39ns
+_ifconv:5  %mean_load = load float* %mean_addr, align 4
+
+ST_9: sigma_addr [1/1] 0.00ns
+_ifconv:34  %sigma_addr = getelementptr [307200 x float]* %sigma, i64 0, i64 %tmp_31
+
+ST_9: sigma_load_1 [2/2] 2.39ns
+_ifconv:35  %sigma_load_1 = load float* %sigma_addr, align 4
+
+ST_9: back_gauss_addr [1/1] 0.00ns
+_ifconv:54  %back_gauss_addr = getelementptr [307200 x i1]* %back_gauss, i64 0, i64 %tmp_31
+
+ST_9: back_gauss_load [2/2] 2.39ns
+_ifconv:55  %back_gauss_load = load i1* %back_gauss_addr, align 1
+
+ST_9: weight_addr_4 [1/1] 0.00ns
+_ifconv:76  %weight_addr_4 = getelementptr [307200 x float]* %weight, i64 0, i64 %tmp_31
+
+ST_9: weight_load [2/2] 2.39ns
+_ifconv:77  %weight_load = load float* %weight_addr_4, align 4
+
+
+ <State 10>: 8.46ns
+ST_10: mean_load [1/2] 2.39ns
+_ifconv:5  %mean_load = load float* %mean_addr, align 4
+
+ST_10: sigma_load_1 [1/2] 2.39ns
+_ifconv:35  %sigma_load_1 = load float* %sigma_addr, align 4
+
+ST_10: back_gauss_load [1/2] 2.39ns
+_ifconv:55  %back_gauss_load = load i1* %back_gauss_addr, align 1
+
+ST_10: alpha_w_load [1/1] 0.00ns
+_ifconv:75  %alpha_w_load = load float* @alpha_w, align 4
+
+ST_10: weight_load [1/2] 2.39ns
+_ifconv:77  %weight_load = load float* %weight_addr_4, align 4
+
+ST_10: tmp_26 [16/16] 6.08ns
+_ifconv:78  %tmp_26 = fdiv float %alpha_w_load, %weight_load
+
+ST_10: tmp_28 [16/16] 6.08ns
+_ifconv:81  %tmp_28 = fdiv float %weight_load, %sigma_load_1
+
+
+ <State 11>: 8.13ns
+ST_11: tmp_i [12/12] 8.13ns
+_ifconv:36  %tmp_i = call float @llvm.sqrt.f32(float %sigma_load_1) nounwind
+
+ST_11: tmp_26 [15/16] 6.08ns
+_ifconv:78  %tmp_26 = fdiv float %alpha_w_load, %weight_load
+
+ST_11: tmp_28 [15/16] 6.08ns
+_ifconv:81  %tmp_28 = fdiv float %weight_load, %sigma_load_1
+
+
+ <State 12>: 8.13ns
+ST_12: tmp_i [11/12] 8.13ns
+_ifconv:36  %tmp_i = call float @llvm.sqrt.f32(float %sigma_load_1) nounwind
+
+ST_12: tmp_26 [14/16] 6.08ns
+_ifconv:78  %tmp_26 = fdiv float %alpha_w_load, %weight_load
+
+ST_12: tmp_28 [14/16] 6.08ns
+_ifconv:81  %tmp_28 = fdiv float %weight_load, %sigma_load_1
+
+
+ <State 13>: 8.13ns
+ST_13: tmp_i [10/12] 8.13ns
+_ifconv:36  %tmp_i = call float @llvm.sqrt.f32(float %sigma_load_1) nounwind
+
+ST_13: tmp_26 [13/16] 6.08ns
+_ifconv:78  %tmp_26 = fdiv float %alpha_w_load, %weight_load
+
+ST_13: tmp_28 [13/16] 6.08ns
+_ifconv:81  %tmp_28 = fdiv float %weight_load, %sigma_load_1
+
+
+ <State 14>: 8.13ns
+ST_14: tmp_i [9/12] 8.13ns
+_ifconv:36  %tmp_i = call float @llvm.sqrt.f32(float %sigma_load_1) nounwind
+
+ST_14: tmp_26 [12/16] 6.08ns
+_ifconv:78  %tmp_26 = fdiv float %alpha_w_load, %weight_load
+
+ST_14: tmp_28 [12/16] 6.08ns
+_ifconv:81  %tmp_28 = fdiv float %weight_load, %sigma_load_1
+
+
+ <State 15>: 8.13ns
+ST_15: tmp_i [8/12] 8.13ns
+_ifconv:36  %tmp_i = call float @llvm.sqrt.f32(float %sigma_load_1) nounwind
+
+ST_15: tmp_26 [11/16] 6.08ns
+_ifconv:78  %tmp_26 = fdiv float %alpha_w_load, %weight_load
+
+ST_15: tmp_28 [11/16] 6.08ns
+_ifconv:81  %tmp_28 = fdiv float %weight_load, %sigma_load_1
+
+
+ <State 16>: 8.13ns
+ST_16: tmp_i [7/12] 8.13ns
+_ifconv:36  %tmp_i = call float @llvm.sqrt.f32(float %sigma_load_1) nounwind
+
+ST_16: tmp_26 [10/16] 6.08ns
+_ifconv:78  %tmp_26 = fdiv float %alpha_w_load, %weight_load
+
+ST_16: tmp_28 [10/16] 6.08ns
+_ifconv:81  %tmp_28 = fdiv float %weight_load, %sigma_load_1
+
+
+ <State 17>: 8.13ns
+ST_17: x_assign_2 [5/5] 7.26ns
+_ifconv:6  %x_assign_2 = fsub float %tmp_21, %mean_load
+
+ST_17: tmp_i [6/12] 8.13ns
+_ifconv:36  %tmp_i = call float @llvm.sqrt.f32(float %sigma_load_1) nounwind
+
+ST_17: tmp_26 [9/16] 6.08ns
+_ifconv:78  %tmp_26 = fdiv float %alpha_w_load, %weight_load
+
+ST_17: tmp_28 [9/16] 6.08ns
+_ifconv:81  %tmp_28 = fdiv float %weight_load, %sigma_load_1
+
+
+ <State 18>: 8.13ns
+ST_18: x_assign_2 [4/5] 7.26ns
+_ifconv:6  %x_assign_2 = fsub float %tmp_21, %mean_load
+
+ST_18: tmp_i [5/12] 8.13ns
+_ifconv:36  %tmp_i = call float @llvm.sqrt.f32(float %sigma_load_1) nounwind
+
+ST_18: tmp_26 [8/16] 6.08ns
+_ifconv:78  %tmp_26 = fdiv float %alpha_w_load, %weight_load
+
+ST_18: tmp_28 [8/16] 6.08ns
+_ifconv:81  %tmp_28 = fdiv float %weight_load, %sigma_load_1
+
+
+ <State 19>: 8.13ns
+ST_19: x_assign_2 [3/5] 7.26ns
+_ifconv:6  %x_assign_2 = fsub float %tmp_21, %mean_load
+
+ST_19: tmp_i [4/12] 8.13ns
+_ifconv:36  %tmp_i = call float @llvm.sqrt.f32(float %sigma_load_1) nounwind
+
+ST_19: tmp_26 [7/16] 6.08ns
+_ifconv:78  %tmp_26 = fdiv float %alpha_w_load, %weight_load
+
+ST_19: tmp_28 [7/16] 6.08ns
+_ifconv:81  %tmp_28 = fdiv float %weight_load, %sigma_load_1
+
+
+ <State 20>: 8.13ns
+ST_20: x_assign_2 [2/5] 7.26ns
+_ifconv:6  %x_assign_2 = fsub float %tmp_21, %mean_load
+
+ST_20: tmp_i [3/12] 8.13ns
+_ifconv:36  %tmp_i = call float @llvm.sqrt.f32(float %sigma_load_1) nounwind
+
+ST_20: tmp_26 [6/16] 6.08ns
+_ifconv:78  %tmp_26 = fdiv float %alpha_w_load, %weight_load
+
+ST_20: tmp_28 [6/16] 6.08ns
+_ifconv:81  %tmp_28 = fdiv float %weight_load, %sigma_load_1
+
+
+ <State 21>: 8.13ns
+ST_21: x_assign_2 [1/5] 7.26ns
+_ifconv:6  %x_assign_2 = fsub float %tmp_21, %mean_load
+
+ST_21: tmp_i [2/12] 8.13ns
+_ifconv:36  %tmp_i = call float @llvm.sqrt.f32(float %sigma_load_1) nounwind
+
+ST_21: tmp_26 [5/16] 6.08ns
+_ifconv:78  %tmp_26 = fdiv float %alpha_w_load, %weight_load
+
+ST_21: tmp_28 [5/16] 6.08ns
+_ifconv:81  %tmp_28 = fdiv float %weight_load, %sigma_load_1
+
+
+ <State 22>: 8.13ns
+ST_22: p_Val2_s [1/1] 0.00ns
+_ifconv:7  %p_Val2_s = bitcast float %x_assign_2 to i32
+
+ST_22: p_Result_s [1/1] 0.00ns
+_ifconv:8  %p_Result_s = call i1 @_ssdm_op_BitSelect.i1.i32.i32(i32 %p_Val2_s, i32 31)
+
+ST_22: loc_V [1/1] 0.00ns
+_ifconv:9  %loc_V = call i8 @_ssdm_op_PartSelect.i8.i32.i32.i32(i32 %p_Val2_s, i32 23, i32 30) nounwind
+
+ST_22: loc_V_1 [1/1] 0.00ns
+_ifconv:10  %loc_V_1 = trunc i32 %p_Val2_s to i23
+
+ST_22: p_Result_1 [1/1] 0.00ns
+_ifconv:11  %p_Result_1 = call i24 @_ssdm_op_BitConcatenate.i24.i1.i23(i1 true, i23 %loc_V_1) nounwind
+
+ST_22: tmp_i_i [1/1] 0.00ns
+_ifconv:12  %tmp_i_i = zext i24 %p_Result_1 to i78
+
+ST_22: tmp_i_i_i_cast [1/1] 0.00ns
+_ifconv:13  %tmp_i_i_i_cast = zext i8 %loc_V to i9
+
+ST_22: sh_assign [1/1] 1.72ns
+_ifconv:14  %sh_assign = add i9 %tmp_i_i_i_cast, -127
+
+ST_22: isNeg [1/1] 0.00ns
+_ifconv:15  %isNeg = call i1 @_ssdm_op_BitSelect.i1.i9.i32(i9 %sh_assign, i32 8)
+
+ST_22: tmp_1_i_i [1/1] 1.72ns
+_ifconv:16  %tmp_1_i_i = sub i8 127, %loc_V
+
+ST_22: tmp_1_i_i_cast [1/1] 0.00ns
+_ifconv:17  %tmp_1_i_i_cast = sext i8 %tmp_1_i_i to i9
+
+ST_22: sh_assign_1 [1/1] 1.37ns
+_ifconv:18  %sh_assign_1 = select i1 %isNeg, i9 %tmp_1_i_i_cast, i9 %sh_assign
+
+ST_22: sh_assign_1_cast [1/1] 0.00ns
+_ifconv:19  %sh_assign_1_cast = sext i9 %sh_assign_1 to i32
+
+ST_22: sh_assign_1_cast_cast [1/1] 0.00ns
+_ifconv:20  %sh_assign_1_cast_cast = sext i9 %sh_assign_1 to i24
+
+ST_22: tmp_2_i_i [1/1] 0.00ns
+_ifconv:21  %tmp_2_i_i = zext i32 %sh_assign_1_cast to i78
+
+ST_22: tmp_3_i_i [1/1] 2.78ns
+_ifconv:22  %tmp_3_i_i = lshr i24 %p_Result_1, %sh_assign_1_cast_cast
+
+ST_22: tmp_5_i_i [1/1] 2.78ns
+_ifconv:23  %tmp_5_i_i = shl i78 %tmp_i_i, %tmp_2_i_i
+
+ST_22: tmp_63 [1/1] 0.00ns
+_ifconv:24  %tmp_63 = call i1 @_ssdm_op_BitSelect.i1.i24.i32(i24 %tmp_3_i_i, i32 23)
+
+ST_22: tmp_32 [1/1] 0.00ns
+_ifconv:25  %tmp_32 = zext i1 %tmp_63 to i32
+
+ST_22: tmp_40 [1/1] 0.00ns
+_ifconv:26  %tmp_40 = call i32 @_ssdm_op_PartSelect.i32.i78.i32.i32(i78 %tmp_5_i_i, i32 23, i32 54)
+
+ST_22: p_Val2_3 [1/1] 1.37ns
+_ifconv:27  %p_Val2_3 = select i1 %isNeg, i32 %tmp_32, i32 %tmp_40
+
+ST_22: tmp_i [1/12] 8.13ns
+_ifconv:36  %tmp_i = call float @llvm.sqrt.f32(float %sigma_load_1) nounwind
+
+ST_22: tmp_26 [4/16] 6.08ns
+_ifconv:78  %tmp_26 = fdiv float %alpha_w_load, %weight_load
+
+ST_22: tmp_28 [4/16] 6.08ns
+_ifconv:81  %tmp_28 = fdiv float %weight_load, %sigma_load_1
+
+
+ <State 23>: 7.70ns
+ST_23: p_Val2_7_i_i [1/1] 2.44ns
+_ifconv:28  %p_Val2_7_i_i = sub i32 0, %p_Val2_3
+
+ST_23: p_Val2_5 [1/1] 1.37ns
+_ifconv:29  %p_Val2_5 = select i1 %p_Result_s, i32 %p_Val2_7_i_i, i32 %p_Val2_3
+
+ST_23: neg [1/1] 2.44ns
+_ifconv:30  %neg = sub i32 0, %p_Val2_5
+
+ST_23: abscond [1/1] 2.52ns
+_ifconv:31  %abscond = icmp sgt i32 %p_Val2_5, 0
+
+ST_23: abs [1/1] 1.37ns
+_ifconv:32  %abs = select i1 %abscond, i32 %p_Val2_5, i32 %neg
+
+ST_23: tmp_24 [1/1] 5.55ns
+_ifconv:37  %tmp_24 = fpext float %tmp_i to double
+
+ST_23: tmp_26 [3/16] 6.08ns
+_ifconv:78  %tmp_26 = fdiv float %alpha_w_load, %weight_load
+
+ST_23: tmp_28 [3/16] 6.08ns
+_ifconv:81  %tmp_28 = fdiv float %weight_load, %sigma_load_1
+
+
+ <State 24>: 7.79ns
+ST_24: tmp_23 [6/6] 6.28ns
+_ifconv:33  %tmp_23 = sitofp i32 %abs to double
+
+ST_24: tmp_25 [6/6] 7.79ns
+_ifconv:38  %tmp_25 = fmul double %tmp_24, 2.500000e+00
+
+ST_24: tmp_26 [2/16] 6.08ns
+_ifconv:78  %tmp_26 = fdiv float %alpha_w_load, %weight_load
+
+ST_24: tmp_28 [2/16] 6.08ns
+_ifconv:81  %tmp_28 = fdiv float %weight_load, %sigma_load_1
+
+
+ <State 25>: 8.46ns
+ST_25: tmp_22 [1/1] 0.00ns
+_ifconv:0  %tmp_22 = zext i3 %j to i64
+
+ST_25: tmp_23 [5/6] 6.28ns
+_ifconv:33  %tmp_23 = sitofp i32 %abs to double
+
+ST_25: tmp_25 [5/6] 7.79ns
+_ifconv:38  %tmp_25 = fmul double %tmp_24, 2.500000e+00
+
+ST_25: tmp_71 [1/1] 0.00ns
+_ifconv:56  %tmp_71 = trunc i3 %j to i2
+
+ST_25: tmp_26 [1/16] 6.08ns
+_ifconv:78  %tmp_26 = fdiv float %alpha_w_load, %weight_load
+
+ST_25: akt_addr [1/1] 0.00ns
+_ifconv:79  %akt_addr = getelementptr inbounds [4 x float]* @akt, i64 0, i64 %tmp_22
+
+ST_25: stg_278 [1/1] 2.39ns
+_ifconv:80  store float %tmp_26, float* %akt_addr, align 4
+
+ST_25: tmp_28 [1/16] 6.08ns
+_ifconv:81  %tmp_28 = fdiv float %weight_load, %sigma_load_1
+
+ST_25: F_addr [1/1] 0.00ns
+_ifconv:82  %F_addr = getelementptr inbounds [4 x float]* @F, i64 0, i64 %tmp_22
+
+ST_25: stg_281 [1/1] 2.39ns
+_ifconv:83  store float %tmp_28, float* %F_addr, align 4
+
+
+ <State 26>: 7.79ns
+ST_26: tmp_23 [4/6] 6.28ns
+_ifconv:33  %tmp_23 = sitofp i32 %abs to double
+
+ST_26: tmp_25 [4/6] 7.79ns
+_ifconv:38  %tmp_25 = fmul double %tmp_24, 2.500000e+00
+
+
+ <State 27>: 7.79ns
+ST_27: tmp_23 [3/6] 6.28ns
+_ifconv:33  %tmp_23 = sitofp i32 %abs to double
+
+ST_27: tmp_25 [3/6] 7.79ns
+_ifconv:38  %tmp_25 = fmul double %tmp_24, 2.500000e+00
+
+
+ <State 28>: 7.79ns
+ST_28: tmp_23 [2/6] 6.28ns
+_ifconv:33  %tmp_23 = sitofp i32 %abs to double
+
+ST_28: tmp_25 [2/6] 7.79ns
+_ifconv:38  %tmp_25 = fmul double %tmp_24, 2.500000e+00
+
+
+ <State 29>: 7.79ns
+ST_29: tmp_23 [1/6] 6.28ns
+_ifconv:33  %tmp_23 = sitofp i32 %abs to double
+
+ST_29: tmp_25 [1/6] 7.79ns
+_ifconv:38  %tmp_25 = fmul double %tmp_24, 2.500000e+00
+
+
+ <State 30>: 8.20ns
+ST_30: tmp_28_to_int [1/1] 0.00ns
+_ifconv:39  %tmp_28_to_int = bitcast double %tmp_23 to i64
+
+ST_30: tmp_1 [1/1] 0.00ns
+_ifconv:40  %tmp_1 = call i11 @_ssdm_op_PartSelect.i11.i64.i32.i32(i64 %tmp_28_to_int, i32 52, i32 62)
+
+ST_30: tmp_64 [1/1] 0.00ns
+_ifconv:41  %tmp_64 = trunc i64 %tmp_28_to_int to i52
+
+ST_30: tmp_31_to_int [1/1] 0.00ns
+_ifconv:42  %tmp_31_to_int = bitcast double %tmp_25 to i64
+
+ST_30: tmp_3 [1/1] 0.00ns
+_ifconv:43  %tmp_3 = call i11 @_ssdm_op_PartSelect.i11.i64.i32.i32(i64 %tmp_31_to_int, i32 52, i32 62)
+
+ST_30: tmp_66 [1/1] 0.00ns
+_ifconv:44  %tmp_66 = trunc i64 %tmp_31_to_int to i52
+
+ST_30: notlhs [1/1] 2.11ns
+_ifconv:45  %notlhs = icmp ne i11 %tmp_1, -1
+
+ST_30: notrhs [1/1] 2.64ns
+_ifconv:46  %notrhs = icmp eq i52 %tmp_64, 0
+
+ST_30: tmp_5 [1/1] 1.37ns
+_ifconv:47  %tmp_5 = or i1 %notrhs, %notlhs
+
+ST_30: notlhs3 [1/1] 2.11ns
+_ifconv:48  %notlhs3 = icmp ne i11 %tmp_3, -1
+
+ST_30: notrhs4 [1/1] 2.64ns
+_ifconv:49  %notrhs4 = icmp eq i52 %tmp_66, 0
+
+ST_30: tmp_6 [1/1] 1.37ns
+_ifconv:50  %tmp_6 = or i1 %notrhs4, %notlhs3
+
+ST_30: tmp_7 [1/1] 1.37ns
+_ifconv:51  %tmp_7 = and i1 %tmp_5, %tmp_6
+
+ST_30: tmp_8 [1/1] 6.82ns
+_ifconv:52  %tmp_8 = fcmp olt double %tmp_23, %tmp_25
+
+ST_30: tmp_9 [1/1] 1.37ns
+_ifconv:53  %tmp_9 = and i1 %tmp_7, %tmp_8
+
+
+ <State 31>: 8.22ns
+ST_31: sel_tmp2 [1/1] 1.37ns
+_ifconv:57  %sel_tmp2 = and i1 %tmp_9, %back_gauss_load
+
+ST_31: sel_tmp5 [1/1] 1.36ns
+_ifconv:58  %sel_tmp5 = icmp eq i2 %tmp_71, -2
+
+ST_31: sel_tmp7 [1/1] 1.37ns
+_ifconv:59  %sel_tmp7 = and i1 %sel_tmp2, %sel_tmp5
+
+ST_31: sel_tmp4 [1/1] 1.37ns
+_ifconv:60  %sel_tmp4 = xor i1 %sel_tmp7, %sel_tmp2
+
+ST_31: sel_tmp9 [1/1] 1.36ns
+_ifconv:61  %sel_tmp9 = icmp eq i2 %tmp_71, 1
+
+ST_31: sel_tmp [1/1] 1.37ns
+_ifconv:62  %sel_tmp = and i1 %sel_tmp2, %sel_tmp9
+
+ST_31: not_sel_tmp [1/1] 1.37ns
+_ifconv:63  %not_sel_tmp = xor i1 %sel_tmp, true
+
+ST_31: sel_tmp1 [1/1] 1.36ns
+_ifconv:64  %sel_tmp1 = icmp eq i2 %tmp_71, 0
+
+ST_31: sel_tmp3 [1/1] 1.37ns
+_ifconv:65  %sel_tmp3 = and i1 %sel_tmp2, %sel_tmp1
+
+ST_31: not_sel_tmp1 [1/1] 1.37ns
+_ifconv:66  %not_sel_tmp1 = xor i1 %sel_tmp3, true
+
+ST_31: tmp [1/1] 1.37ns
+_ifconv:67  %tmp = and i1 %not_sel_tmp, %not_sel_tmp1
+
+ST_31: sel_tmp6 [1/1] 1.37ns
+_ifconv:68  %sel_tmp6 = and i1 %tmp, %sel_tmp4
+
+ST_31: M_3_4 [1/1] 1.37ns
+_ifconv:69  %M_3_4 = or i1 %sel_tmp6, %M_3_2
+
+ST_31: sel_tmp8 [1/1] 1.37ns
+_ifconv:70  %sel_tmp8 = and i1 %tmp, %sel_tmp7
+
+ST_31: M_2_4 [1/1] 1.37ns
+_ifconv:71  %M_2_4 = or i1 %sel_tmp8, %M_2_2
+
+ST_31: sel_tmp10 [1/1] 1.37ns
+_ifconv:72  %sel_tmp10 = and i1 %sel_tmp, %not_sel_tmp1
+
+ST_31: M_1_4 [1/1] 1.37ns
+_ifconv:73  %M_1_4 = or i1 %sel_tmp10, %M_1_2
+
+ST_31: M_0_4 [1/1] 1.37ns
+_ifconv:74  %M_0_4 = or i1 %sel_tmp3, %M_0_2
+
+ST_31: stg_323 [1/1] 0.00ns
+_ifconv:84  br label %2
+
+
+ <State 32>: 6.41ns
+ST_32: max_val_2 [1/1] 0.00ns
+.preheader8:0  %max_val_2 = phi i3 [ %j_2, %_ifconv68 ], [ 0, %2 ]
+
+ST_32: min_val [1/1] 0.00ns
+.preheader8:1  %min_val = phi i32 [ %min_val_1, %_ifconv68 ], [ 10, %2 ]
+
+ST_32: max_val [1/1] 0.00ns
+.preheader8:2  %max_val = phi i32 [ %min_val_3, %_ifconv68 ], [ 10, %2 ]
+
+ST_32: min_F [1/1] 0.00ns
+.preheader8:3  %min_F = phi float [ %min_F_1, %_ifconv68 ], [ 1.000000e+03, %2 ]
+
+ST_32: max_F [1/1] 0.00ns
+.preheader8:4  %max_F = phi float [ %max_F_2, %_ifconv68 ], [ 0.000000e+00, %2 ]
+
+ST_32: max_val_3_cast [1/1] 0.00ns
+.preheader8:5  %max_val_3_cast = zext i3 %max_val_2 to i32
+
+ST_32: exitcond5 [1/1] 1.62ns
+.preheader8:6  %exitcond5 = icmp eq i3 %max_val_2, -4
+
+ST_32: empty_20 [1/1] 0.00ns
+.preheader8:7  %empty_20 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 4, i64 4, i64 4)
+
+ST_32: j_2 [1/1] 0.80ns
+.preheader8:8  %j_2 = add i3 %max_val_2, 1
+
+ST_32: stg_333 [1/1] 0.00ns
+.preheader8:9  br i1 %exitcond5, label %3, label %_ifconv68
+
+ST_32: tmp_29 [1/1] 0.00ns
+_ifconv68:0  %tmp_29 = zext i3 %max_val_2 to i64
+
+ST_32: tmp_81 [1/1] 0.00ns
+_ifconv68:1  %tmp_81 = trunc i3 %max_val_2 to i2
+
+ST_32: sel_tmp11 [1/1] 1.36ns
+_ifconv68:2  %sel_tmp11 = icmp eq i2 %tmp_81, 1
+
+ST_32: sel_tmp12 [1/1] 1.37ns
+_ifconv68:3  %sel_tmp12 = select i1 %sel_tmp11, i1 %M_1_2, i1 %M_3_2
+
+ST_32: sel_tmp13 [1/1] 1.36ns
+_ifconv68:4  %sel_tmp13 = icmp eq i2 %tmp_81, -2
+
+ST_32: sel_tmp14 [1/1] 1.37ns
+_ifconv68:5  %sel_tmp14 = select i1 %sel_tmp13, i1 %M_2_2, i1 %sel_tmp12
+
+ST_32: sel_tmp15 [1/1] 1.36ns
+_ifconv68:6  %sel_tmp15 = icmp eq i2 %tmp_81, 0
+
+ST_32: M_load_phi [1/1] 1.37ns
+_ifconv68:7  %M_load_phi = select i1 %sel_tmp15, i1 %M_0_2, i1 %sel_tmp14
+
+ST_32: F_addr_1 [1/1] 0.00ns
+_ifconv68:8  %F_addr_1 = getelementptr inbounds [4 x float]* @F, i64 0, i64 %tmp_29
+
+ST_32: max_F_4 [2/2] 2.39ns
+_ifconv68:9  %max_F_4 = load float* %F_addr_1, align 4
+
+ST_32: tmp_76 [1/1] 0.00ns
+:0  %tmp_76 = call i30 @_ssdm_op_PartSelect.i30.i32.i32.i32(i32 %max_val, i32 2, i32 31)
+
+ST_32: icmp [1/1] 2.49ns
+:1  %icmp = icmp slt i30 %tmp_76, 1
+
+ST_32: stg_346 [1/1] 0.00ns
+:2  br i1 %icmp, label %4, label %8
+
+ST_32: matchsumtot [1/1] 0.00ns
+:0  %matchsumtot = alloca float, align 4
+
+ST_32: tmp_48 [6/6] 6.41ns
+:1  %tmp_48 = uitofp i8 %pixel_read to float
+
+ST_32: stg_349 [1/1] 1.57ns
+:11  store float 0.000000e+00, float* %matchsumtot, align 4
+
+ST_32: p_addr4 [1/1] 2.44ns
+:1  %p_addr4 = add i32 %p_addr6, %max_val
+
+ST_32: tmp_54 [1/1] 0.00ns
+:2  %tmp_54 = sext i32 %p_addr4 to i64
+
+ST_32: mean_addr_4 [1/1] 0.00ns
+:3  %mean_addr_4 = getelementptr [307200 x float]* %mean, i64 0, i64 %tmp_54
+
+ST_32: mean_load_1 [2/2] 2.39ns
+:4  %mean_load_1 = load float* %mean_addr_4, align 4
+
+ST_32: sigma_addr_4 [1/1] 0.00ns
+:11  %sigma_addr_4 = getelementptr [307200 x float]* %sigma, i64 0, i64 %tmp_54
+
+ST_32: weight_addr [1/1] 0.00ns
+:19  %weight_addr = getelementptr [307200 x float]* %weight, i64 0, i64 %tmp_54
+
+ST_32: matchsum_addr [1/1] 0.00ns
+:26  %matchsum_addr = getelementptr [307200 x i8]* %matchsum, i64 0, i64 %tmp_54
+
+ST_32: matchsum_load [2/2] 2.39ns
+:27  %matchsum_load = load i8* %matchsum_addr, align 1
+
+
+ <State 33>: 2.39ns
+ST_33: max_F_4 [1/2] 2.39ns
+_ifconv68:9  %max_F_4 = load float* %F_addr_1, align 4
+
+
+ <State 34>: 8.16ns
+ST_34: max_F_1_to_int [1/1] 0.00ns
+_ifconv68:10  %max_F_1_to_int = bitcast float %max_F_4 to i32
+
+ST_34: tmp_11 [1/1] 0.00ns
+_ifconv68:11  %tmp_11 = call i8 @_ssdm_op_PartSelect.i8.i32.i32.i32(i32 %max_F_1_to_int, i32 23, i32 30)
+
+ST_34: tmp_83 [1/1] 0.00ns
+_ifconv68:12  %tmp_83 = trunc i32 %max_F_1_to_int to i23
+
+ST_34: max_F_to_int [1/1] 0.00ns
+_ifconv68:13  %max_F_to_int = bitcast float %max_F to i32
+
+ST_34: tmp_13 [1/1] 0.00ns
+_ifconv68:14  %tmp_13 = call i8 @_ssdm_op_PartSelect.i8.i32.i32.i32(i32 %max_F_to_int, i32 23, i32 30)
+
+ST_34: tmp_100 [1/1] 0.00ns
+_ifconv68:15  %tmp_100 = trunc i32 %max_F_to_int to i23
+
+ST_34: notlhs5 [1/1] 2.00ns
+_ifconv68:16  %notlhs5 = icmp ne i8 %tmp_11, -1
+
+ST_34: notrhs6 [1/1] 2.39ns
+_ifconv68:17  %notrhs6 = icmp eq i23 %tmp_83, 0
+
+ST_34: tmp_15 [1/1] 1.37ns
+_ifconv68:18  %tmp_15 = or i1 %notrhs6, %notlhs5
+
+ST_34: notlhs7 [1/1] 2.00ns
+_ifconv68:19  %notlhs7 = icmp ne i8 %tmp_13, -1
+
+ST_34: notrhs8 [1/1] 2.39ns
+_ifconv68:20  %notrhs8 = icmp eq i23 %tmp_100, 0
+
+ST_34: tmp_16 [1/1] 1.37ns
+_ifconv68:21  %tmp_16 = or i1 %notrhs8, %notlhs7
+
+ST_34: tmp_17 [1/1] 1.37ns
+_ifconv68:22  %tmp_17 = and i1 %tmp_15, %tmp_16
+
+ST_34: tmp_18 [1/1] 6.79ns
+_ifconv68:23  %tmp_18 = fcmp ogt float %max_F_4, %max_F
+
+ST_34: tmp_19 [1/1] 1.37ns
+_ifconv68:24  %tmp_19 = and i1 %tmp_17, %tmp_18
+
+ST_34: min_F_to_int [1/1] 0.00ns
+_ifconv68:30  %min_F_to_int = bitcast float %min_F to i32
+
+ST_34: tmp_30 [1/1] 0.00ns
+_ifconv68:31  %tmp_30 = call i8 @_ssdm_op_PartSelect.i8.i32.i32.i32(i32 %min_F_to_int, i32 23, i32 30)
+
+ST_34: tmp_101 [1/1] 0.00ns
+_ifconv68:32  %tmp_101 = trunc i32 %min_F_to_int to i23
+
+ST_34: notlhs1 [1/1] 2.00ns
+_ifconv68:33  %notlhs1 = icmp ne i8 %tmp_30, -1
+
+ST_34: notrhs2 [1/1] 2.39ns
+_ifconv68:34  %notrhs2 = icmp eq i23 %tmp_101, 0
+
+ST_34: tmp_41 [1/1] 1.37ns
+_ifconv68:35  %tmp_41 = or i1 %notrhs2, %notlhs1
+
+ST_34: tmp_49 [1/1] 1.37ns
+_ifconv68:36  %tmp_49 = and i1 %tmp_15, %tmp_41
+
+ST_34: tmp_51 [1/1] 6.79ns
+_ifconv68:37  %tmp_51 = fcmp olt float %max_F_4, %min_F
+
+ST_34: tmp_53 [1/1] 1.37ns
+_ifconv68:38  %tmp_53 = and i1 %tmp_49, %tmp_51
+
+
+ <State 35>: 4.11ns
+ST_35: sel_tmp16 [1/1] 1.37ns
+_ifconv68:25  %sel_tmp16 = and i1 %M_load_phi, %tmp_19
+
+ST_35: min_val_2 [1/1] 1.37ns
+_ifconv68:26  %min_val_2 = select i1 %sel_tmp16, i32 %max_val_3_cast, i32 %max_val
+
+ST_35: min_val_3 [1/1] 1.37ns
+_ifconv68:27  %min_val_3 = select i1 %M_load_phi, i32 %min_val_2, i32 %max_val
+
+ST_35: max_F_3 [1/1] 1.37ns
+_ifconv68:28  %max_F_3 = select i1 %sel_tmp16, float %max_F_4, float %max_F
+
+ST_35: max_F_2 [1/1] 1.37ns
+_ifconv68:29  %max_F_2 = select i1 %M_load_phi, float %max_F_3, float %max_F
+
+ST_35: min_val_1 [1/1] 1.37ns
+_ifconv68:39  %min_val_1 = select i1 %tmp_53, i32 %max_val_3_cast, i32 %min_val
+
+ST_35: min_F_1 [1/1] 1.37ns
+_ifconv68:40  %min_F_1 = select i1 %tmp_53, float %max_F_4, float %min_F
+
+ST_35: stg_390 [1/1] 0.00ns
+_ifconv68:41  br label %.preheader8
+
+
+ <State 36>: 6.41ns
+ST_36: tmp_48 [5/6] 6.41ns
+:1  %tmp_48 = uitofp i8 %pixel_read to float
+
+
+ <State 37>: 6.41ns
+ST_37: tmp_48 [4/6] 6.41ns
+:1  %tmp_48 = uitofp i8 %pixel_read to float
+
+
+ <State 38>: 6.41ns
+ST_38: tmp_48 [3/6] 6.41ns
+:1  %tmp_48 = uitofp i8 %pixel_read to float
+
+
+ <State 39>: 6.41ns
+ST_39: tmp_48 [2/6] 6.41ns
+:1  %tmp_48 = uitofp i8 %pixel_read to float
+
+
+ <State 40>: 6.41ns
+ST_40: tmp_48 [1/6] 6.41ns
+:1  %tmp_48 = uitofp i8 %pixel_read to float
+
+
+ <State 41>: 4.83ns
+ST_41: p_addr1 [1/1] 2.44ns
+:2  %p_addr1 = add i32 %p_addr6, %min_val
+
+ST_41: tmp_58 [1/1] 0.00ns
+:3  %tmp_58 = sext i32 %p_addr1 to i64
+
+ST_41: mean_addr_5 [1/1] 0.00ns
+:4  %mean_addr_5 = getelementptr [307200 x float]* %mean, i64 0, i64 %tmp_58
+
+ST_41: stg_399 [1/1] 2.39ns
+:5  store float %tmp_48, float* %mean_addr_5, align 4
+
+ST_41: vinit_load [1/1] 0.00ns
+:6  %vinit_load = load float* @vinit, align 4
+
+ST_41: sigma_addr_5 [1/1] 0.00ns
+:7  %sigma_addr_5 = getelementptr [307200 x float]* %sigma, i64 0, i64 %tmp_58
+
+ST_41: stg_402 [1/1] 2.39ns
+:8  store float %vinit_load, float* %sigma_addr_5, align 4
+
+ST_41: matchsum_addr_4 [1/1] 0.00ns
+:9  %matchsum_addr_4 = getelementptr [307200 x i8]* %matchsum, i64 0, i64 %tmp_58
+
+ST_41: stg_404 [1/1] 2.39ns
+:10  store i8 1, i8* %matchsum_addr_4, align 1
+
+ST_41: stg_405 [1/1] 1.57ns
+:12  br label %._crit_edge14
+
+
+ <State 42>: 8.16ns
+ST_42: j3 [1/1] 0.00ns
+._crit_edge14:0  %j3 = phi i3 [ 0, %8 ], [ %j_4, %._crit_edge14.backedge ]
+
+ST_42: j3_cast [1/1] 0.00ns
+._crit_edge14:1  %j3_cast = zext i3 %j3 to i32
+
+ST_42: j3_cast_cast [1/1] 0.00ns
+._crit_edge14:2  %j3_cast_cast = zext i3 %j3 to i20
+
+ST_42: exitcond3 [1/1] 1.62ns
+._crit_edge14:3  %exitcond3 = icmp eq i3 %j3, -4
+
+ST_42: empty_22 [1/1] 0.00ns
+._crit_edge14:4  %empty_22 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 4, i64 4, i64 4)
+
+ST_42: j_4 [1/1] 0.80ns
+._crit_edge14:5  %j_4 = add i3 %j3, 1
+
+ST_42: stg_412 [1/1] 0.00ns
+._crit_edge14:6  br i1 %exitcond3, label %11, label %9
+
+ST_42: tmp_52 [1/1] 2.52ns
+:0  %tmp_52 = icmp eq i32 %j3_cast, %min_val
+
+ST_42: stg_414 [1/1] 0.00ns
+:1  br i1 %tmp_52, label %._crit_edge14.backedge, label %10
+
+ST_42: p_addr5 [1/1] 2.08ns
+:1  %p_addr5 = add i20 %p_addr6_cast, %j3_cast_cast
+
+ST_42: tmp_73 [1/1] 0.00ns
+:2  %tmp_73 = zext i20 %p_addr5 to i64
+
+ST_42: weight_addr_8 [1/1] 0.00ns
+:3  %weight_addr_8 = getelementptr [307200 x float]* %weight, i64 0, i64 %tmp_73
+
+ST_42: weight_load_3 [2/2] 2.39ns
+:4  %weight_load_3 = load float* %weight_addr_8, align 4
+
+ST_42: matchsum_addr_5 [1/1] 0.00ns
+:8  %matchsum_addr_5 = getelementptr [307200 x i8]* %matchsum, i64 0, i64 %tmp_73
+
+ST_42: matchsum_load_1 [2/2] 2.39ns
+:9  %matchsum_load_1 = load i8* %matchsum_addr_5, align 1
+
+ST_42: matchsumtot_load_1 [1/1] 0.00ns
+:0  %matchsumtot_load_1 = load float* %matchsumtot, align 4
+
+ST_42: matchsumtot_to_int [1/1] 0.00ns
+:1  %matchsumtot_to_int = bitcast float %matchsumtot_load_1 to i32
+
+ST_42: tmp_59 [1/1] 0.00ns
+:2  %tmp_59 = call i8 @_ssdm_op_PartSelect.i8.i32.i32.i32(i32 %matchsumtot_to_int, i32 23, i32 30)
+
+ST_42: tmp_102 [1/1] 0.00ns
+:3  %tmp_102 = trunc i32 %matchsumtot_to_int to i23
+
+ST_42: notlhs2 [1/1] 2.00ns
+:4  %notlhs2 = icmp ne i8 %tmp_59, -1
+
+ST_42: notrhs3 [1/1] 2.39ns
+:5  %notrhs3 = icmp eq i23 %tmp_102, 0
+
+ST_42: tmp_65 [1/1] 1.37ns
+:6  %tmp_65 = or i1 %notrhs3, %notlhs2
+
+ST_42: tmp_67 [1/1] 6.79ns
+:7  %tmp_67 = fcmp oeq float %matchsumtot_load_1, 0.000000e+00
+
+ST_42: tmp_70 [1/1] 1.37ns
+:8  %tmp_70 = and i1 %tmp_65, %tmp_67
+
+ST_42: stg_430 [1/1] 0.00ns
+:9  br i1 %tmp_70, label %13, label %12
+
+ST_42: tmp_57 [16/16] 6.08ns
+:0  %tmp_57 = fdiv float 1.000000e+00, %matchsumtot_load_1
+
+ST_42: weight_addr_7 [1/1] 0.00ns
+:0  %weight_addr_7 = getelementptr [307200 x float]* %weight, i64 0, i64 %tmp_58
+
+ST_42: stg_433 [1/1] 2.39ns
+:1  store float 0x3FB1EB8520000000, float* %weight_addr_7, align 4
+
+ST_42: stg_434 [1/1] 0.00ns
+:2  br label %14
+
+
+ <State 43>: 2.39ns
+ST_43: weight_load_3 [1/2] 2.39ns
+:4  %weight_load_3 = load float* %weight_addr_8, align 4
+
+ST_43: matchsum_load_1 [1/2] 2.39ns
+:9  %matchsum_load_1 = load i8* %matchsum_addr_5, align 1
+
+
+ <State 44>: 7.26ns
+ST_44: alpha_w_load_2 [1/1] 0.00ns
+:5  %alpha_w_load_2 = load float* @alpha_w, align 4
+
+ST_44: tmp_60 [5/5] 7.26ns
+:6  %tmp_60 = fsub float %weight_load_3, %alpha_w_load_2
+
+ST_44: tmp_61 [1/1] 0.00ns
+:10  %tmp_61 = zext i8 %matchsum_load_1 to i32
+
+ST_44: tmp_62 [6/6] 6.41ns
+:11  %tmp_62 = sitofp i32 %tmp_61 to float
+
+
+ <State 45>: 7.26ns
+ST_45: tmp_60 [4/5] 7.26ns
+:6  %tmp_60 = fsub float %weight_load_3, %alpha_w_load_2
+
+ST_45: tmp_62 [5/6] 6.41ns
+:11  %tmp_62 = sitofp i32 %tmp_61 to float
+
+
+ <State 46>: 7.26ns
+ST_46: tmp_60 [3/5] 7.26ns
+:6  %tmp_60 = fsub float %weight_load_3, %alpha_w_load_2
+
+ST_46: tmp_62 [4/6] 6.41ns
+:11  %tmp_62 = sitofp i32 %tmp_61 to float
+
+
+ <State 47>: 7.26ns
+ST_47: tmp_60 [2/5] 7.26ns
+:6  %tmp_60 = fsub float %weight_load_3, %alpha_w_load_2
+
+ST_47: tmp_62 [3/6] 6.41ns
+:11  %tmp_62 = sitofp i32 %tmp_61 to float
+
+
+ <State 48>: 7.26ns
+ST_48: tmp_60 [1/5] 7.26ns
+:6  %tmp_60 = fsub float %weight_load_3, %alpha_w_load_2
+
+ST_48: tmp_62 [2/6] 6.41ns
+:11  %tmp_62 = sitofp i32 %tmp_61 to float
+
+
+ <State 49>: 6.41ns
+ST_49: stg_449 [1/1] 2.39ns
+:7  store float %tmp_60, float* %weight_addr_8, align 4
+
+ST_49: tmp_62 [1/6] 6.41ns
+:11  %tmp_62 = sitofp i32 %tmp_61 to float
+
+
+ <State 50>: 7.26ns
+ST_50: matchsumtot_load [1/1] 0.00ns
+:0  %matchsumtot_load = load float* %matchsumtot, align 4
+
+ST_50: matchsumtot_1 [5/5] 7.26ns
+:12  %matchsumtot_1 = fadd float %matchsumtot_load, %tmp_62
+
+
+ <State 51>: 7.26ns
+ST_51: matchsumtot_1 [4/5] 7.26ns
+:12  %matchsumtot_1 = fadd float %matchsumtot_load, %tmp_62
+
+
+ <State 52>: 7.26ns
+ST_52: matchsumtot_1 [3/5] 7.26ns
+:12  %matchsumtot_1 = fadd float %matchsumtot_load, %tmp_62
+
+
+ <State 53>: 7.26ns
+ST_53: matchsumtot_1 [2/5] 7.26ns
+:12  %matchsumtot_1 = fadd float %matchsumtot_load, %tmp_62
+
+
+ <State 54>: 7.26ns
+ST_54: matchsumtot_1 [1/5] 7.26ns
+:12  %matchsumtot_1 = fadd float %matchsumtot_load, %tmp_62
+
+
+ <State 55>: 1.57ns
+ST_55: stg_457 [1/1] 1.57ns
+:13  store float %matchsumtot_1, float* %matchsumtot, align 4
+
+ST_55: stg_458 [1/1] 0.00ns
+:14  br label %._crit_edge14.backedge
+
+ST_55: stg_459 [1/1] 0.00ns
+._crit_edge14.backedge:0  br label %._crit_edge14
+
+
+ <State 56>: 6.08ns
+ST_56: tmp_57 [15/16] 6.08ns
+:0  %tmp_57 = fdiv float 1.000000e+00, %matchsumtot_load_1
+
+
+ <State 57>: 6.08ns
+ST_57: tmp_57 [14/16] 6.08ns
+:0  %tmp_57 = fdiv float 1.000000e+00, %matchsumtot_load_1
+
+
+ <State 58>: 6.08ns
+ST_58: tmp_57 [13/16] 6.08ns
+:0  %tmp_57 = fdiv float 1.000000e+00, %matchsumtot_load_1
+
+
+ <State 59>: 6.08ns
+ST_59: tmp_57 [12/16] 6.08ns
+:0  %tmp_57 = fdiv float 1.000000e+00, %matchsumtot_load_1
+
+
+ <State 60>: 6.08ns
+ST_60: tmp_57 [11/16] 6.08ns
+:0  %tmp_57 = fdiv float 1.000000e+00, %matchsumtot_load_1
+
+
+ <State 61>: 6.08ns
+ST_61: tmp_57 [10/16] 6.08ns
+:0  %tmp_57 = fdiv float 1.000000e+00, %matchsumtot_load_1
+
+
+ <State 62>: 6.08ns
+ST_62: tmp_57 [9/16] 6.08ns
+:0  %tmp_57 = fdiv float 1.000000e+00, %matchsumtot_load_1
+
+
+ <State 63>: 6.08ns
+ST_63: tmp_57 [8/16] 6.08ns
+:0  %tmp_57 = fdiv float 1.000000e+00, %matchsumtot_load_1
+
+
+ <State 64>: 6.08ns
+ST_64: tmp_57 [7/16] 6.08ns
+:0  %tmp_57 = fdiv float 1.000000e+00, %matchsumtot_load_1
+
+
+ <State 65>: 6.08ns
+ST_65: tmp_57 [6/16] 6.08ns
+:0  %tmp_57 = fdiv float 1.000000e+00, %matchsumtot_load_1
+
+
+ <State 66>: 6.08ns
+ST_66: tmp_57 [5/16] 6.08ns
+:0  %tmp_57 = fdiv float 1.000000e+00, %matchsumtot_load_1
+
+
+ <State 67>: 6.08ns
+ST_67: tmp_57 [4/16] 6.08ns
+:0  %tmp_57 = fdiv float 1.000000e+00, %matchsumtot_load_1
+
+
+ <State 68>: 6.08ns
+ST_68: tmp_57 [3/16] 6.08ns
+:0  %tmp_57 = fdiv float 1.000000e+00, %matchsumtot_load_1
+
+
+ <State 69>: 6.08ns
+ST_69: tmp_57 [2/16] 6.08ns
+:0  %tmp_57 = fdiv float 1.000000e+00, %matchsumtot_load_1
+
+
+ <State 70>: 8.46ns
+ST_70: tmp_57 [1/16] 6.08ns
+:0  %tmp_57 = fdiv float 1.000000e+00, %matchsumtot_load_1
+
+ST_70: weight_addr_6 [1/1] 0.00ns
+:1  %weight_addr_6 = getelementptr [307200 x float]* %weight, i64 0, i64 %tmp_58
+
+ST_70: stg_476 [1/1] 2.39ns
+:2  store float %tmp_57, float* %weight_addr_6, align 4
+
+ST_70: stg_477 [1/1] 0.00ns
+:3  br label %14
+
+ST_70: stg_478 [1/1] 1.57ns
+:0  br label %17
+
+
+ <State 71>: 6.50ns
+ST_71: mean_load_1 [1/2] 2.39ns
+:4  %mean_load_1 = load float* %mean_addr_4, align 4
+
+ST_71: matchsum_load [1/2] 2.39ns
+:27  %matchsum_load = load i8* %matchsum_addr, align 1
+
+ST_71: tmp_47 [1/1] 1.72ns
+:28  %tmp_47 = add i8 %matchsum_load, 1
+
+ST_71: stg_482 [1/1] 2.39ns
+:29  store i8 %tmp_47, i8* %matchsum_addr, align 1
+
+
+ <State 72>: 7.26ns
+ST_72: tmp_34 [5/5] 7.26ns
+:7  %tmp_34 = fsub float %tmp_21, %mean_load_1
+
+
+ <State 73>: 7.26ns
+ST_73: tmp_34 [4/5] 7.26ns
+:7  %tmp_34 = fsub float %tmp_21, %mean_load_1
+
+
+ <State 74>: 7.26ns
+ST_74: tmp_34 [3/5] 7.26ns
+:7  %tmp_34 = fsub float %tmp_21, %mean_load_1
+
+
+ <State 75>: 7.26ns
+ST_75: tmp_34 [2/5] 7.26ns
+:7  %tmp_34 = fsub float %tmp_21, %mean_load_1
+
+
+ <State 76>: 7.26ns
+ST_76: tmp_33 [1/1] 0.00ns
+:0  %tmp_33 = sext i32 %max_val to i64
+
+ST_76: akt_addr_1 [1/1] 0.00ns
+:5  %akt_addr_1 = getelementptr inbounds [4 x float]* @akt, i64 0, i64 %tmp_33
+
+ST_76: akt_load [2/2] 2.39ns
+:6  %akt_load = load float* %akt_addr_1, align 4
+
+ST_76: tmp_34 [1/5] 7.26ns
+:7  %tmp_34 = fsub float %tmp_21, %mean_load_1
+
+
+ <State 77>: 8.09ns
+ST_77: akt_load [1/2] 2.39ns
+:6  %akt_load = load float* %akt_addr_1, align 4
+
+ST_77: tmp_35 [4/4] 5.70ns
+:8  %tmp_35 = fmul float %akt_load, %tmp_34
+
+
+ <State 78>: 5.70ns
+ST_78: tmp_35 [3/4] 5.70ns
+:8  %tmp_35 = fmul float %akt_load, %tmp_34
+
+
+ <State 79>: 5.70ns
+ST_79: tmp_35 [2/4] 5.70ns
+:8  %tmp_35 = fmul float %akt_load, %tmp_34
+
+
+ <State 80>: 5.70ns
+ST_80: tmp_35 [1/4] 5.70ns
+:8  %tmp_35 = fmul float %akt_load, %tmp_34
+
+
+ <State 81>: 7.26ns
+ST_81: tmp_36 [5/5] 7.26ns
+:9  %tmp_36 = fadd float %mean_load_1, %tmp_35
+
+
+ <State 82>: 7.26ns
+ST_82: tmp_36 [4/5] 7.26ns
+:9  %tmp_36 = fadd float %mean_load_1, %tmp_35
+
+
+ <State 83>: 7.26ns
+ST_83: tmp_36 [3/5] 7.26ns
+:9  %tmp_36 = fadd float %mean_load_1, %tmp_35
+
+
+ <State 84>: 7.26ns
+ST_84: tmp_36 [2/5] 7.26ns
+:9  %tmp_36 = fadd float %mean_load_1, %tmp_35
+
+
+ <State 85>: 7.26ns
+ST_85: tmp_36 [1/5] 7.26ns
+:9  %tmp_36 = fadd float %mean_load_1, %tmp_35
+
+
+ <State 86>: 7.26ns
+ST_86: stg_501 [1/1] 2.39ns
+:10  store float %tmp_36, float* %mean_addr_4, align 4
+
+ST_86: tmp_37 [5/5] 7.26ns
+:13  %tmp_37 = fsub float %tmp_21, %tmp_36
+
+
+ <State 87>: 7.26ns
+ST_87: tmp_37 [4/5] 7.26ns
+:13  %tmp_37 = fsub float %tmp_21, %tmp_36
+
+
+ <State 88>: 7.26ns
+ST_88: tmp_37 [3/5] 7.26ns
+:13  %tmp_37 = fsub float %tmp_21, %tmp_36
+
+
+ <State 89>: 7.26ns
+ST_89: tmp_37 [2/5] 7.26ns
+:13  %tmp_37 = fsub float %tmp_21, %tmp_36
+
+
+ <State 90>: 7.26ns
+ST_90: tmp_37 [1/5] 7.26ns
+:13  %tmp_37 = fsub float %tmp_21, %tmp_36
+
+
+ <State 91>: 5.70ns
+ST_91: tmp_38 [4/4] 5.70ns
+:14  %tmp_38 = fmul float %tmp_37, %tmp_37
+
+
+ <State 92>: 5.70ns
+ST_92: tmp_38 [3/4] 5.70ns
+:14  %tmp_38 = fmul float %tmp_37, %tmp_37
+
+
+ <State 93>: 5.70ns
+ST_93: sigma_load [2/2] 2.39ns
+:12  %sigma_load = load float* %sigma_addr_4, align 4
+
+ST_93: tmp_38 [2/4] 5.70ns
+:14  %tmp_38 = fmul float %tmp_37, %tmp_37
+
+
+ <State 94>: 5.70ns
+ST_94: sigma_load [1/2] 2.39ns
+:12  %sigma_load = load float* %sigma_addr_4, align 4
+
+ST_94: tmp_38 [1/4] 5.70ns
+:14  %tmp_38 = fmul float %tmp_37, %tmp_37
+
+ST_94: weight_load_1 [2/2] 2.39ns
+:20  %weight_load_1 = load float* %weight_addr, align 4
+
+
+ <State 95>: 8.09ns
+ST_95: tmp_39 [5/5] 7.26ns
+:15  %tmp_39 = fsub float %tmp_38, %sigma_load
+
+ST_95: weight_load_1 [1/2] 2.39ns
+:20  %weight_load_1 = load float* %weight_addr, align 4
+
+ST_95: alpha_w_load_1 [1/1] 0.00ns
+:21  %alpha_w_load_1 = load float* @alpha_w, align 4
+
+ST_95: tmp_44 [4/4] 5.70ns
+:22  %tmp_44 = fmul float %alpha_w_load_1, %weight_load_1
+
+
+ <State 96>: 7.26ns
+ST_96: tmp_39 [4/5] 7.26ns
+:15  %tmp_39 = fsub float %tmp_38, %sigma_load
+
+ST_96: tmp_44 [3/4] 5.70ns
+:22  %tmp_44 = fmul float %alpha_w_load_1, %weight_load_1
+
+
+ <State 97>: 7.26ns
+ST_97: tmp_39 [3/5] 7.26ns
+:15  %tmp_39 = fsub float %tmp_38, %sigma_load
+
+ST_97: tmp_44 [2/4] 5.70ns
+:22  %tmp_44 = fmul float %alpha_w_load_1, %weight_load_1
+
+
+ <State 98>: 7.26ns
+ST_98: tmp_39 [2/5] 7.26ns
+:15  %tmp_39 = fsub float %tmp_38, %sigma_load
+
+ST_98: tmp_44 [1/4] 5.70ns
+:22  %tmp_44 = fmul float %alpha_w_load_1, %weight_load_1
+
+
+ <State 99>: 7.26ns
+ST_99: tmp_39 [1/5] 7.26ns
+:15  %tmp_39 = fsub float %tmp_38, %sigma_load
+
+ST_99: tmp_45 [5/5] 7.26ns
+:23  %tmp_45 = fsub float %weight_load_1, %tmp_44
+
+
+ <State 100>: 7.26ns
+ST_100: tmp_42 [4/4] 5.70ns
+:16  %tmp_42 = fmul float %akt_load, %tmp_39
+
+ST_100: tmp_45 [4/5] 7.26ns
+:23  %tmp_45 = fsub float %weight_load_1, %tmp_44
+
+
+ <State 101>: 7.26ns
+ST_101: tmp_42 [3/4] 5.70ns
+:16  %tmp_42 = fmul float %akt_load, %tmp_39
+
+ST_101: tmp_45 [3/5] 7.26ns
+:23  %tmp_45 = fsub float %weight_load_1, %tmp_44
+
+
+ <State 102>: 7.26ns
+ST_102: tmp_42 [2/4] 5.70ns
+:16  %tmp_42 = fmul float %akt_load, %tmp_39
+
+ST_102: tmp_45 [2/5] 7.26ns
+:23  %tmp_45 = fsub float %weight_load_1, %tmp_44
+
+
+ <State 103>: 7.26ns
+ST_103: tmp_42 [1/4] 5.70ns
+:16  %tmp_42 = fmul float %akt_load, %tmp_39
+
+ST_103: tmp_45 [1/5] 7.26ns
+:23  %tmp_45 = fsub float %weight_load_1, %tmp_44
+
+
+ <State 104>: 7.26ns
+ST_104: tmp_43 [5/5] 7.26ns
+:17  %tmp_43 = fadd float %sigma_load, %tmp_42
+
+ST_104: tmp_46 [5/5] 7.26ns
+:24  %tmp_46 = fadd float %tmp_45, %alpha_w_load_1
+
+
+ <State 105>: 7.26ns
+ST_105: tmp_43 [4/5] 7.26ns
+:17  %tmp_43 = fadd float %sigma_load, %tmp_42
+
+ST_105: tmp_46 [4/5] 7.26ns
+:24  %tmp_46 = fadd float %tmp_45, %alpha_w_load_1
+
+
+ <State 106>: 7.26ns
+ST_106: tmp_43 [3/5] 7.26ns
+:17  %tmp_43 = fadd float %sigma_load, %tmp_42
+
+ST_106: tmp_46 [3/5] 7.26ns
+:24  %tmp_46 = fadd float %tmp_45, %alpha_w_load_1
+
+
+ <State 107>: 7.26ns
+ST_107: tmp_43 [2/5] 7.26ns
+:17  %tmp_43 = fadd float %sigma_load, %tmp_42
+
+ST_107: tmp_46 [2/5] 7.26ns
+:24  %tmp_46 = fadd float %tmp_45, %alpha_w_load_1
+
+
+ <State 108>: 7.26ns
+ST_108: tmp_43 [1/5] 7.26ns
+:17  %tmp_43 = fadd float %sigma_load, %tmp_42
+
+ST_108: tmp_46 [1/5] 7.26ns
+:24  %tmp_46 = fadd float %tmp_45, %alpha_w_load_1
+
+
+ <State 109>: 2.39ns
+ST_109: stg_544 [1/1] 2.39ns
+:18  store float %tmp_43, float* %sigma_addr_4, align 4
+
+ST_109: stg_545 [1/1] 2.39ns
+:25  store float %tmp_46, float* %weight_addr, align 4
+
+ST_109: stg_546 [1/1] 1.57ns
+:30  br label %5
+
+
+ <State 110>: 4.47ns
+ST_110: j2 [1/1] 0.00ns
+:0  %j2 = phi i3 [ 0, %4 ], [ %j_3, %._crit_edge13 ]
+
+ST_110: j2_cast [1/1] 0.00ns
+:1  %j2_cast = zext i3 %j2 to i32
+
+ST_110: j2_cast_cast [1/1] 0.00ns
+:2  %j2_cast_cast = zext i3 %j2 to i20
+
+ST_110: exitcond4 [1/1] 1.62ns
+:3  %exitcond4 = icmp eq i3 %j2, -4
+
+ST_110: empty_21 [1/1] 0.00ns
+:4  %empty_21 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 4, i64 4, i64 4)
+
+ST_110: j_3 [1/1] 0.80ns
+:5  %j_3 = add i3 %j2, 1
+
+ST_110: stg_553 [1/1] 1.57ns
+:6  br i1 %exitcond4, label %.preheader7, label %6
+
+ST_110: tmp_50 [1/1] 2.52ns
+:0  %tmp_50 = icmp eq i32 %j2_cast, %max_val
+
+ST_110: stg_555 [1/1] 0.00ns
+:1  br i1 %tmp_50, label %._crit_edge13, label %7
+
+ST_110: p_addr2 [1/1] 2.08ns
+:0  %p_addr2 = add i20 %p_addr6_cast, %j2_cast_cast
+
+ST_110: tmp_72 [1/1] 0.00ns
+:1  %tmp_72 = zext i20 %p_addr2 to i64
+
+ST_110: weight_addr_5 [1/1] 0.00ns
+:2  %weight_addr_5 = getelementptr [307200 x float]* %weight, i64 0, i64 %tmp_72
+
+ST_110: weight_load_2 [2/2] 2.39ns
+:3  %weight_load_2 = load float* %weight_addr_5, align 4
+
+
+ <State 111>: 2.39ns
+ST_111: weight_load_2 [1/2] 2.39ns
+:3  %weight_load_2 = load float* %weight_addr_5, align 4
+
+
+ <State 112>: 7.26ns
+ST_112: tmp_55 [5/5] 7.26ns
+:4  %tmp_55 = fsub float %weight_load_2, %alpha_w_load_1
+
+
+ <State 113>: 7.26ns
+ST_113: tmp_55 [4/5] 7.26ns
+:4  %tmp_55 = fsub float %weight_load_2, %alpha_w_load_1
+
+
+ <State 114>: 7.26ns
+ST_114: tmp_55 [3/5] 7.26ns
+:4  %tmp_55 = fsub float %weight_load_2, %alpha_w_load_1
+
+
+ <State 115>: 7.26ns
+ST_115: tmp_55 [2/5] 7.26ns
+:4  %tmp_55 = fsub float %weight_load_2, %alpha_w_load_1
+
+
+ <State 116>: 7.26ns
+ST_116: tmp_55 [1/5] 7.26ns
+:4  %tmp_55 = fsub float %weight_load_2, %alpha_w_load_1
+
+
+ <State 117>: 2.39ns
+ST_117: stg_566 [1/1] 2.39ns
+:5  store float %tmp_55, float* %weight_addr_5, align 4
+
+ST_117: stg_567 [1/1] 0.00ns
+:6  br label %._crit_edge13
+
+ST_117: stg_568 [1/1] 0.00ns
+._crit_edge13:0  br label %5
+
+
+ <State 118>: 3.19ns
+ST_118: sorted_F_3 [1/1] 0.00ns
+.preheader7:0  %sorted_F_3 = phi float [ %sorted_F_3_2, %_ifconv83 ], [ undef, %5 ]
+
+ST_118: sorted_F_2 [1/1] 0.00ns
+.preheader7:1  %sorted_F_2 = phi float [ %sorted_F_3_5, %_ifconv83 ], [ undef, %5 ]
+
+ST_118: sorted_F_3_6 [1/1] 0.00ns
+.preheader7:2  %sorted_F_3_6 = phi float [ %sorted_F_3_8, %_ifconv83 ], [ undef, %5 ]
+
+ST_118: sorted_F_3_9 [1/1] 0.00ns
+.preheader7:3  %sorted_F_3_9 = phi float [ %sorted_F_3_16, %_ifconv83 ], [ undef, %5 ]
+
+ST_118: i [1/1] 0.00ns
+.preheader7:4  %i = phi i3 [ %i_4, %_ifconv83 ], [ 0, %5 ]
+
+ST_118: exitcond2 [1/1] 1.62ns
+.preheader7:5  %exitcond2 = icmp eq i3 %i, -4
+
+ST_118: empty_23 [1/1] 0.00ns
+.preheader7:6  %empty_23 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 4, i64 4, i64 4)
+
+ST_118: i_4 [1/1] 0.80ns
+.preheader7:7  %i_4 = add i3 %i, 1
+
+ST_118: stg_577 [1/1] 1.57ns
+.preheader7:8  br i1 %exitcond2, label %.preheader, label %_ifconv83
+
+ST_118: tmp_56 [1/1] 0.00ns
+_ifconv83:0  %tmp_56 = zext i3 %i to i64
+
+ST_118: F_addr_2 [1/1] 0.00ns
+_ifconv83:1  %F_addr_2 = getelementptr inbounds [4 x float]* @F, i64 0, i64 %tmp_56
+
+ST_118: sorted_F_0_13 [2/2] 2.39ns
+_ifconv83:2  %sorted_F_0_13 = load float* %F_addr_2, align 4
+
+ST_118: tmp_103 [1/1] 0.00ns
+_ifconv83:3  %tmp_103 = trunc i3 %i to i2
+
+
+ <State 119>: 6.50ns
+ST_119: sorted_F_0_13 [1/2] 2.39ns
+_ifconv83:2  %sorted_F_0_13 = load float* %F_addr_2, align 4
+
+ST_119: sel_tmp17 [1/1] 1.36ns
+_ifconv83:4  %sel_tmp17 = icmp eq i2 %tmp_103, -2
+
+ST_119: sorted_F_3_24 [1/1] 1.37ns
+_ifconv83:5  %sorted_F_3_24 = select i1 %sel_tmp17, float %sorted_F_3, float %sorted_F_0_13
+
+ST_119: sel_tmp18 [1/1] 1.36ns
+_ifconv83:6  %sel_tmp18 = icmp eq i2 %tmp_103, 1
+
+ST_119: sorted_F_3_1 [1/1] 1.37ns
+_ifconv83:7  %sorted_F_3_1 = select i1 %sel_tmp18, float %sorted_F_3, float %sorted_F_3_24
+
+ST_119: sel_tmp19 [1/1] 1.36ns
+_ifconv83:8  %sel_tmp19 = icmp eq i2 %tmp_103, 0
+
+ST_119: sorted_F_3_2 [1/1] 1.37ns
+_ifconv83:9  %sorted_F_3_2 = select i1 %sel_tmp19, float %sorted_F_3, float %sorted_F_3_1
+
+ST_119: sorted_F_3_3 [1/1] 1.37ns
+_ifconv83:10  %sorted_F_3_3 = select i1 %sel_tmp17, float %sorted_F_0_13, float %sorted_F_2
+
+ST_119: sorted_F_3_4 [1/1] 1.37ns
+_ifconv83:11  %sorted_F_3_4 = select i1 %sel_tmp18, float %sorted_F_2, float %sorted_F_3_3
+
+ST_119: sorted_F_3_5 [1/1] 1.37ns
+_ifconv83:12  %sorted_F_3_5 = select i1 %sel_tmp19, float %sorted_F_2, float %sorted_F_3_4
+
+ST_119: sorted_F_3_7 [1/1] 1.37ns
+_ifconv83:13  %sorted_F_3_7 = select i1 %sel_tmp18, float %sorted_F_0_13, float %sorted_F_3_6
+
+ST_119: sorted_F_3_8 [1/1] 1.37ns
+_ifconv83:14  %sorted_F_3_8 = select i1 %sel_tmp19, float %sorted_F_3_6, float %sorted_F_3_7
+
+ST_119: sorted_F_3_16 [1/1] 1.37ns
+_ifconv83:15  %sorted_F_3_16 = select i1 %sel_tmp19, float %sorted_F_0_13, float %sorted_F_3_9
+
+ST_119: stg_595 [1/1] 0.00ns
+_ifconv83:16  br label %.preheader7
+
+
+ <State 120>: 4.47ns
+ST_120: sorted_weight_3 [1/1] 0.00ns
+.preheader:0  %sorted_weight_3 = phi float [ %sorted_weight_3_2, %_ifconv108 ], [ undef, %.preheader7 ]
+
+ST_120: sorted_weight_2 [1/1] 0.00ns
+.preheader:1  %sorted_weight_2 = phi float [ %sorted_weight_3_5, %_ifconv108 ], [ undef, %.preheader7 ]
+
+ST_120: sorted_weight_3_6 [1/1] 0.00ns
+.preheader:2  %sorted_weight_3_6 = phi float [ %sorted_weight_3_8, %_ifconv108 ], [ undef, %.preheader7 ]
+
+ST_120: sorted_weight_3_9 [1/1] 0.00ns
+.preheader:3  %sorted_weight_3_9 = phi float [ %sorted_weight_3_11, %_ifconv108 ], [ undef, %.preheader7 ]
+
+ST_120: i4 [1/1] 0.00ns
+.preheader:4  %i4 = phi i3 [ %i_5, %_ifconv108 ], [ 0, %.preheader7 ]
+
+ST_120: exitcond1 [1/1] 1.62ns
+.preheader:5  %exitcond1 = icmp eq i3 %i4, -4
+
+ST_120: empty_25 [1/1] 0.00ns
+.preheader:6  %empty_25 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 4, i64 4, i64 4)
+
+ST_120: i_5 [1/1] 0.80ns
+.preheader:7  %i_5 = add i3 %i4, 1
+
+ST_120: stg_604 [1/1] 1.57ns
+.preheader:8  br i1 %exitcond1, label %.preheader192, label %_ifconv108
+
+ST_120: tmp_63_trn_cast [1/1] 0.00ns
+_ifconv108:0  %tmp_63_trn_cast = zext i3 %i4 to i20
+
+ST_120: p_addr8 [1/1] 2.08ns
+_ifconv108:1  %p_addr8 = add i20 %p_addr6_cast, %tmp_63_trn_cast
+
+ST_120: tmp_74 [1/1] 0.00ns
+_ifconv108:2  %tmp_74 = zext i20 %p_addr8 to i64
+
+ST_120: weight_addr_9 [1/1] 0.00ns
+_ifconv108:3  %weight_addr_9 = getelementptr [307200 x float]* %weight, i64 0, i64 %tmp_74
+
+ST_120: sorted_weight_0_16 [2/2] 2.39ns
+_ifconv108:4  %sorted_weight_0_16 = load float* %weight_addr_9, align 4
+
+ST_120: tmp_104 [1/1] 0.00ns
+_ifconv108:5  %tmp_104 = trunc i3 %i4 to i2
+
+
+ <State 121>: 6.50ns
+ST_121: sorted_weight_0_16 [1/2] 2.39ns
+_ifconv108:4  %sorted_weight_0_16 = load float* %weight_addr_9, align 4
+
+ST_121: sel_tmp20 [1/1] 1.36ns
+_ifconv108:6  %sel_tmp20 = icmp eq i2 %tmp_104, -2
+
+ST_121: sorted_weight_3_26 [1/1] 1.37ns
+_ifconv108:7  %sorted_weight_3_26 = select i1 %sel_tmp20, float %sorted_weight_3, float %sorted_weight_0_16
+
+ST_121: sel_tmp21 [1/1] 1.36ns
+_ifconv108:8  %sel_tmp21 = icmp eq i2 %tmp_104, 1
+
+ST_121: sorted_weight_3_1 [1/1] 1.37ns
+_ifconv108:9  %sorted_weight_3_1 = select i1 %sel_tmp21, float %sorted_weight_3, float %sorted_weight_3_26
+
+ST_121: sel_tmp22 [1/1] 1.36ns
+_ifconv108:10  %sel_tmp22 = icmp eq i2 %tmp_104, 0
+
+ST_121: sorted_weight_3_2 [1/1] 1.37ns
+_ifconv108:11  %sorted_weight_3_2 = select i1 %sel_tmp22, float %sorted_weight_3, float %sorted_weight_3_1
+
+ST_121: sorted_weight_3_3 [1/1] 1.37ns
+_ifconv108:12  %sorted_weight_3_3 = select i1 %sel_tmp20, float %sorted_weight_0_16, float %sorted_weight_2
+
+ST_121: sorted_weight_3_4 [1/1] 1.37ns
+_ifconv108:13  %sorted_weight_3_4 = select i1 %sel_tmp21, float %sorted_weight_2, float %sorted_weight_3_3
+
+ST_121: sorted_weight_3_5 [1/1] 1.37ns
+_ifconv108:14  %sorted_weight_3_5 = select i1 %sel_tmp22, float %sorted_weight_2, float %sorted_weight_3_4
+
+ST_121: sorted_weight_3_7 [1/1] 1.37ns
+_ifconv108:15  %sorted_weight_3_7 = select i1 %sel_tmp21, float %sorted_weight_0_16, float %sorted_weight_3_6
+
+ST_121: sorted_weight_3_8 [1/1] 1.37ns
+_ifconv108:16  %sorted_weight_3_8 = select i1 %sel_tmp22, float %sorted_weight_3_6, float %sorted_weight_3_7
+
+ST_121: sorted_weight_3_11 [1/1] 1.37ns
+_ifconv108:17  %sorted_weight_3_11 = select i1 %sel_tmp22, float %sorted_weight_0_16, float %sorted_weight_3_9
+
+ST_121: stg_624 [1/1] 0.00ns
+_ifconv108:18  br label %.preheader
+
+
+ <State 122>: 7.86ns
+ST_122: index_3 [1/1] 0.00ns
+.preheader192:0  %index_3 = phi i32 [ %index_0_3, %_ifconv195 ], [ 3, %.preheader ]
+
+ST_122: index_2 [1/1] 0.00ns
+.preheader192:1  %index_2 = phi i32 [ %index_0_6, %_ifconv195 ], [ 2, %.preheader ]
+
+ST_122: index_1 [1/1] 0.00ns
+.preheader192:2  %index_1 = phi i32 [ %index_0_9, %_ifconv195 ], [ 1, %.preheader ]
+
+ST_122: index_0_11 [1/1] 0.00ns
+.preheader192:3  %index_0_11 = phi i32 [ %index_0_12, %_ifconv195 ], [ 0, %.preheader ]
+
+ST_122: sorted_weight_3_2_27 [1/1] 0.00ns
+.preheader192:4  %sorted_weight_3_2_27 = phi float [ %sorted_weight_0_5, %_ifconv195 ], [ %sorted_weight_3, %.preheader ]
+
+ST_122: sorted_weight_2_2 [1/1] 0.00ns
+.preheader192:5  %sorted_weight_2_2 = phi float [ %sorted_weight_0_8, %_ifconv195 ], [ %sorted_weight_2, %.preheader ]
+
+ST_122: sorted_weight_1_2 [1/1] 0.00ns
+.preheader192:6  %sorted_weight_1_2 = phi float [ %sorted_weight_0_10, %_ifconv195 ], [ %sorted_weight_3_6, %.preheader ]
+
+ST_122: sorted_weight_0_14 [1/1] 0.00ns
+.preheader192:7  %sorted_weight_0_14 = phi float [ %sorted_weight_0_15, %_ifconv195 ], [ %sorted_weight_3_9, %.preheader ]
+
+ST_122: sorted_F_3_2_28 [1/1] 0.00ns
+.preheader192:8  %sorted_F_3_2_28 = phi float [ %sorted_F_0_2, %_ifconv195 ], [ %sorted_F_3, %.preheader ]
+
+ST_122: sorted_F_2_2 [1/1] 0.00ns
+.preheader192:9  %sorted_F_2_2 = phi float [ %sorted_F_0_5, %_ifconv195 ], [ %sorted_F_2, %.preheader ]
+
+ST_122: sorted_F_1_2 [1/1] 0.00ns
+.preheader192:10  %sorted_F_1_2 = phi float [ %sorted_F_0_8, %_ifconv195 ], [ %sorted_F_3_6, %.preheader ]
+
+ST_122: sorted_F_0_9 [1/1] 0.00ns
+.preheader192:11  %sorted_F_0_9 = phi float [ %sorted_F_0_12, %_ifconv195 ], [ %sorted_F_3_9, %.preheader ]
+
+ST_122: i6 [1/1] 0.00ns
+.preheader192:12  %i6 = phi i3 [ %i_6, %_ifconv195 ], [ 1, %.preheader ]
+
+ST_122: i6_cast [1/1] 0.00ns
+.preheader192:13  %i6_cast = zext i3 %i6 to i32
+
+ST_122: exitcond [1/1] 1.62ns
+.preheader192:14  %exitcond = icmp eq i3 %i6, -4
+
+ST_122: empty_29 [1/1] 0.00ns
+.preheader192:15  %empty_29 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 3, i64 3, i64 3)
+
+ST_122: stg_641 [1/1] 0.00ns
+.preheader192:16  br i1 %exitcond, label %15, label %_ifconv182
+
+ST_122: tmp_105 [1/1] 0.00ns
+_ifconv182:0  %tmp_105 = trunc i3 %i6 to i2
+
+ST_122: sel_tmp23 [1/1] 1.36ns
+_ifconv182:1  %sel_tmp23 = icmp eq i2 %tmp_105, -2
+
+ST_122: sorted_F_3_17 [1/1] 1.37ns
+_ifconv182:2  %sorted_F_3_17 = select i1 %sel_tmp23, float %sorted_F_2_2, float %sorted_F_3_2_28
+
+ST_122: sel_tmp24 [1/1] 1.36ns
+_ifconv182:3  %sel_tmp24 = icmp eq i2 %tmp_105, 1
+
+ST_122: sorted_F_3_23 [1/1] 1.37ns
+_ifconv182:4  %sorted_F_3_23 = select i1 %sel_tmp24, float %sorted_F_1_2, float %sorted_F_3_17
+
+ST_122: sorted_weight_3_12 [1/1] 1.37ns
+_ifconv182:5  %sorted_weight_3_12 = select i1 %sel_tmp23, float %sorted_weight_2_2, float %sorted_weight_3_2_27
+
+ST_122: sorted_weight_3_20 [1/1] 1.37ns
+_ifconv182:6  %sorted_weight_3_20 = select i1 %sel_tmp24, float %sorted_weight_1_2, float %sorted_weight_3_12
+
+ST_122: index_3_30 [1/1] 1.37ns
+_ifconv182:7  %index_3_30 = select i1 %sel_tmp23, i32 %index_2, i32 %index_3
+
+ST_122: index_3_8 [1/1] 1.37ns
+_ifconv182:8  %index_3_8 = select i1 %sel_tmp24, i32 %index_1, i32 %index_3_30
+
+ST_122: sorted_F_0_1_to_int [1/1] 0.00ns
+_ifconv182:9  %sorted_F_0_1_to_int = bitcast float %sorted_F_3_23 to i32
+
+ST_122: tmp_80 [1/1] 0.00ns
+_ifconv182:10  %tmp_80 = call i8 @_ssdm_op_PartSelect.i8.i32.i32.i32(i32 %sorted_F_0_1_to_int, i32 23, i32 30)
+
+ST_122: tmp_106 [1/1] 0.00ns
+_ifconv182:11  %tmp_106 = trunc i32 %sorted_F_0_1_to_int to i23
+
+ST_122: notlhs6 [1/1] 2.00ns
+_ifconv182:12  %notlhs6 = icmp ne i8 %tmp_80, -1
+
+ST_122: notrhs7 [1/1] 2.39ns
+_ifconv182:13  %notrhs7 = icmp eq i23 %tmp_106, 0
+
+ST_122: tmp_84 [1/1] 1.37ns
+_ifconv182:14  %tmp_84 = or i1 %notrhs7, %notlhs6
+
+ST_122: stg_657 [1/1] 1.57ns
+_ifconv182:15  br label %branch65
+
+ST_122: tmp_89 [1/1] 0.00ns
+:0  %tmp_89 = zext i19 %tmp_27 to i64
+
+ST_122: back_gauss_addr_4 [1/1] 0.00ns
+:1  %back_gauss_addr_4 = getelementptr [307200 x i1]* %back_gauss, i64 0, i64 %tmp_89
+
+ST_122: stg_660 [1/1] 2.39ns
+:2  store i1 false, i1* %back_gauss_addr_4, align 1
+
+ST_122: tmp_90 [1/1] 0.00ns
+:3  %tmp_90 = or i19 %tmp_27, 1
+
+ST_122: p_addr9 [1/1] 0.00ns
+:4  %p_addr9 = call i32 @_ssdm_op_BitConcatenate.i32.i13.i19(i13 0, i19 %tmp_90)
+
+ST_122: tmp_91 [1/1] 0.00ns
+:5  %tmp_91 = zext i32 %p_addr9 to i64
+
+ST_122: back_gauss_addr_5 [1/1] 0.00ns
+:6  %back_gauss_addr_5 = getelementptr [307200 x i1]* %back_gauss, i64 0, i64 %tmp_91
+
+ST_122: stg_665 [1/1] 2.39ns
+:7  store i1 false, i1* %back_gauss_addr_5, align 1
+
+
+ <State 123>: 4.32ns
+ST_123: index_3_1 [1/1] 0.00ns
+branch65:0  %index_3_1 = phi i32 [ %index_3, %_ifconv182 ], [ %index_3_6, %_ifconv133 ]
+
+ST_123: index_2_1 [1/1] 0.00ns
+branch65:1  %index_2_1 = phi i32 [ %index_2, %_ifconv182 ], [ %index_1_1, %_ifconv133 ]
+
+ST_123: index_1_6 [1/1] 0.00ns
+branch65:2  %index_1_6 = phi i32 [ %index_1, %_ifconv182 ], [ %index_1_3, %_ifconv133 ]
+
+ST_123: sorted_weight_3_3_31 [1/1] 0.00ns
+branch65:3  %sorted_weight_3_3_31 = phi float [ %sorted_weight_3_2_27, %_ifconv182 ], [ %sorted_weight_3_18, %_ifconv133 ]
+
+ST_123: sorted_weight_2_3 [1/1] 0.00ns
+branch65:4  %sorted_weight_2_3 = phi float [ %sorted_weight_2_2, %_ifconv182 ], [ %sorted_weight_1_2_34, %_ifconv133 ]
+
+ST_123: sorted_weight_1_7 [1/1] 0.00ns
+branch65:5  %sorted_weight_1_7 = phi float [ %sorted_weight_1_2, %_ifconv182 ], [ %sorted_weight_1_4, %_ifconv133 ]
+
+ST_123: sorted_F_3_3_32 [1/1] 0.00ns
+branch65:6  %sorted_F_3_3_32 = phi float [ %sorted_F_3_2_28, %_ifconv182 ], [ %sorted_F_3_11, %_ifconv133 ]
+
+ST_123: sorted_F_2_3 [1/1] 0.00ns
+branch65:7  %sorted_F_2_3 = phi float [ %sorted_F_2_2, %_ifconv182 ], [ %sorted_F_3_13, %_ifconv133 ]
+
+ST_123: sorted_F_3_24_33 [1/1] 0.00ns
+branch65:8  %sorted_F_3_24_33 = phi float [ %sorted_F_1_2, %_ifconv182 ], [ %sorted_F_3_21, %_ifconv133 ]
+
+ST_123: j5_0_in [1/1] 0.00ns
+branch65:9  %j5_0_in = phi i32 [ %i6_cast, %_ifconv182 ], [ %j_5, %_ifconv133 ]
+
+ST_123: j_5 [1/1] 2.44ns
+branch65:10  %j_5 = add nsw i32 %j5_0_in, -1
+
+ST_123: tmp_108 [1/1] 0.00ns
+branch65:11  %tmp_108 = trunc i32 %j_5 to i2
+
+ST_123: stg_678 [1/1] 1.88ns
+branch65:12  switch i2 %tmp_108, label %branch23 [
+    i2 0, label %branch20
+    i2 1, label %branch21
+    i2 -2, label %branch22
+  ]
+
+ST_123: stg_679 [1/1] 1.57ns
+branch22:0  br label %branch20
+
+ST_123: stg_680 [1/1] 1.57ns
+branch21:0  br label %branch20
+
+ST_123: stg_681 [1/1] 1.57ns
+branch23:0  br label %branch20
+
+
+ <State 124>: 8.16ns
+ST_124: sorted_F_1 [1/1] 0.00ns
+branch20:0  %sorted_F_1 = phi float [ %sorted_F_3_24_33, %branch21 ], [ %sorted_F_2_3, %branch22 ], [ %sorted_F_3_3_32, %branch23 ], [ %sorted_F_0_9, %branch65 ]
+
+ST_124: sorted_F_1_to_int [1/1] 0.00ns
+branch20:1  %sorted_F_1_to_int = bitcast float %sorted_F_1 to i32
+
+ST_124: tmp_82 [1/1] 0.00ns
+branch20:2  %tmp_82 = call i8 @_ssdm_op_PartSelect.i8.i32.i32.i32(i32 %sorted_F_1_to_int, i32 23, i32 30)
+
+ST_124: tmp_111 [1/1] 0.00ns
+branch20:3  %tmp_111 = trunc i32 %sorted_F_1_to_int to i23
+
+ST_124: notlhs8 [1/1] 2.00ns
+branch20:4  %notlhs8 = icmp ne i8 %tmp_82, -1
+
+ST_124: notrhs9 [1/1] 2.39ns
+branch20:5  %notrhs9 = icmp eq i23 %tmp_111, 0
+
+ST_124: tmp_85 [1/1] 1.37ns
+branch20:6  %tmp_85 = or i1 %notrhs9, %notlhs8
+
+ST_124: tmp_86 [1/1] 1.37ns
+branch20:7  %tmp_86 = and i1 %tmp_84, %tmp_85
+
+ST_124: tmp_87 [1/1] 6.79ns
+branch20:8  %tmp_87 = fcmp ogt float %sorted_F_3_23, %sorted_F_1
+
+ST_124: tmp_88 [1/1] 1.37ns
+branch20:9  %tmp_88 = and i1 %tmp_86, %tmp_87
+
+
+ <State 125>: 8.21ns
+ST_125: tmp_68 [1/1] 2.52ns
+branch20:10  %tmp_68 = icmp sgt i32 %j5_0_in, 0
+
+ST_125: tmp_69 [1/1] 1.37ns
+branch20:11  %tmp_69 = and i1 %tmp_88, %tmp_68
+
+ST_125: stg_694 [1/1] 0.00ns
+branch20:12  br i1 %tmp_69, label %_ifconv133, label %_ifconv195
+
+ST_125: tmp_112 [1/1] 0.00ns
+_ifconv133:0  %tmp_112 = trunc i32 %j5_0_in to i2
+
+ST_125: sel_tmp28 [1/1] 1.36ns
+_ifconv133:1  %sel_tmp28 = icmp eq i2 %tmp_112, -2
+
+ST_125: sorted_F_3_10 [1/1] 1.37ns
+_ifconv133:2  %sorted_F_3_10 = select i1 %sel_tmp28, float %sorted_F_3_3_32, float %sorted_F_1
+
+ST_125: sel_tmp29 [1/1] 1.36ns
+_ifconv133:3  %sel_tmp29 = icmp eq i2 %tmp_112, 1
+
+ST_125: sorted_F_3_11 [1/1] 1.37ns
+_ifconv133:4  %sorted_F_3_11 = select i1 %sel_tmp29, float %sorted_F_3_3_32, float %sorted_F_3_10
+
+ST_125: sorted_F_3_12 [1/1] 1.37ns
+_ifconv133:5  %sorted_F_3_12 = select i1 %sel_tmp28, float %sorted_F_1, float %sorted_F_2_3
+
+ST_125: sorted_F_3_13 [1/1] 1.37ns
+_ifconv133:6  %sorted_F_3_13 = select i1 %sel_tmp29, float %sorted_F_2_3, float %sorted_F_3_12
+
+ST_125: sorted_F_3_21 [1/1] 1.37ns
+_ifconv133:7  %sorted_F_3_21 = select i1 %sel_tmp29, float %sorted_F_1, float %sorted_F_3_24_33
+
+ST_125: sel_tmp30 [1/1] 1.36ns
+_ifconv133:8  %sel_tmp30 = icmp eq i2 %tmp_108, 1
+
+ST_125: sorted_weight_3_14 [1/1] 1.37ns
+_ifconv133:9  %sorted_weight_3_14 = select i1 %sel_tmp30, float %sorted_weight_1_7, float %sorted_weight_3_3_31
+
+ST_125: sel_tmp31 [1/1] 1.36ns
+_ifconv133:10  %sel_tmp31 = icmp eq i2 %tmp_108, -2
+
+ST_125: sorted_weight_3_15 [1/1] 1.37ns
+_ifconv133:11  %sorted_weight_3_15 = select i1 %sel_tmp31, float %sorted_weight_2_3, float %sorted_weight_3_14
+
+ST_125: sel_tmp32 [1/1] 1.36ns
+_ifconv133:12  %sel_tmp32 = icmp eq i2 %tmp_108, 0
+
+ST_125: sorted_weight_3_21 [1/1] 1.37ns
+_ifconv133:13  %sorted_weight_3_21 = select i1 %sel_tmp32, float %sorted_weight_0_14, float %sorted_weight_3_15
+
+ST_125: sorted_weight_3_17 [1/1] 1.37ns
+_ifconv133:14  %sorted_weight_3_17 = select i1 %sel_tmp28, float %sorted_weight_3_3_31, float %sorted_weight_3_21
+
+ST_125: sorted_weight_3_18 [1/1] 1.37ns
+_ifconv133:15  %sorted_weight_3_18 = select i1 %sel_tmp29, float %sorted_weight_3_3_31, float %sorted_weight_3_17
+
+ST_125: sorted_weight_1 [1/1] 1.37ns
+_ifconv133:16  %sorted_weight_1 = select i1 %sel_tmp28, float %sorted_weight_3_21, float %sorted_weight_2_3
+
+ST_125: sorted_weight_1_2_34 [1/1] 1.37ns
+_ifconv133:17  %sorted_weight_1_2_34 = select i1 %sel_tmp29, float %sorted_weight_2_3, float %sorted_weight_1
+
+ST_125: sorted_weight_1_4 [1/1] 1.37ns
+_ifconv133:18  %sorted_weight_1_4 = select i1 %sel_tmp29, float %sorted_weight_3_21, float %sorted_weight_1_7
+
+ST_125: index_3_2 [1/1] 1.37ns
+_ifconv133:19  %index_3_2 = select i1 %sel_tmp30, i32 %index_1_6, i32 %index_3_1
+
+ST_125: index_3_3 [1/1] 1.37ns
+_ifconv133:20  %index_3_3 = select i1 %sel_tmp31, i32 %index_2_1, i32 %index_3_2
+
+ST_125: index_3_9 [1/1] 1.37ns
+_ifconv133:21  %index_3_9 = select i1 %sel_tmp32, i32 %index_0_11, i32 %index_3_3
+
+ST_125: index_3_5 [1/1] 1.37ns
+_ifconv133:22  %index_3_5 = select i1 %sel_tmp28, i32 %index_3_1, i32 %index_3_9
+
+ST_125: index_3_6 [1/1] 1.37ns
+_ifconv133:23  %index_3_6 = select i1 %sel_tmp29, i32 %index_3_1, i32 %index_3_5
+
+ST_125: index_1_35 [1/1] 1.37ns
+_ifconv133:24  %index_1_35 = select i1 %sel_tmp28, i32 %index_3_9, i32 %index_2_1
+
+ST_125: index_1_1 [1/1] 1.37ns
+_ifconv133:25  %index_1_1 = select i1 %sel_tmp29, i32 %index_2_1, i32 %index_1_35
+
+ST_125: index_1_3 [1/1] 1.37ns
+_ifconv133:26  %index_1_3 = select i1 %sel_tmp29, i32 %index_3_9, i32 %index_1_6
+
+ST_125: stg_722 [1/1] 0.00ns
+_ifconv133:27  br label %branch65
+
+ST_125: tmp_113 [1/1] 0.00ns
+_ifconv195:0  %tmp_113 = trunc i32 %j5_0_in to i2
+
+ST_125: sel_tmp33 [1/1] 1.36ns
+_ifconv195:1  %sel_tmp33 = icmp eq i2 %tmp_113, -2
+
+ST_125: sorted_F_0 [1/1] 1.37ns
+_ifconv195:2  %sorted_F_0 = select i1 %sel_tmp33, float %sorted_F_3_3_32, float %sorted_F_3_23
+
+ST_125: sel_tmp34 [1/1] 1.36ns
+_ifconv195:3  %sel_tmp34 = icmp eq i2 %tmp_113, 1
+
+ST_125: sorted_F_0_1 [1/1] 1.37ns
+_ifconv195:4  %sorted_F_0_1 = select i1 %sel_tmp34, float %sorted_F_3_3_32, float %sorted_F_0
+
+ST_125: sel_tmp35 [1/1] 1.36ns
+_ifconv195:5  %sel_tmp35 = icmp eq i2 %tmp_113, 0
+
+ST_125: sorted_F_0_2 [1/1] 1.37ns
+_ifconv195:6  %sorted_F_0_2 = select i1 %sel_tmp35, float %sorted_F_3_3_32, float %sorted_F_0_1
+
+ST_125: sorted_F_0_3 [1/1] 1.37ns
+_ifconv195:7  %sorted_F_0_3 = select i1 %sel_tmp33, float %sorted_F_3_23, float %sorted_F_2_3
+
+ST_125: sorted_F_0_4 [1/1] 1.37ns
+_ifconv195:8  %sorted_F_0_4 = select i1 %sel_tmp34, float %sorted_F_2_3, float %sorted_F_0_3
+
+ST_125: sorted_F_0_5 [1/1] 1.37ns
+_ifconv195:9  %sorted_F_0_5 = select i1 %sel_tmp35, float %sorted_F_2_3, float %sorted_F_0_4
+
+ST_125: sorted_F_0_7 [1/1] 1.37ns
+_ifconv195:10  %sorted_F_0_7 = select i1 %sel_tmp34, float %sorted_F_3_23, float %sorted_F_3_24_33
+
+ST_125: sorted_F_0_8 [1/1] 1.37ns
+_ifconv195:11  %sorted_F_0_8 = select i1 %sel_tmp35, float %sorted_F_3_24_33, float %sorted_F_0_7
+
+ST_125: sorted_F_0_12 [1/1] 1.37ns
+_ifconv195:12  %sorted_F_0_12 = select i1 %sel_tmp35, float %sorted_F_3_23, float %sorted_F_0_9
+
+ST_125: sorted_weight_0_3 [1/1] 1.37ns
+_ifconv195:13  %sorted_weight_0_3 = select i1 %sel_tmp33, float %sorted_weight_3_3_31, float %sorted_weight_3_20
+
+ST_125: sorted_weight_0_4 [1/1] 1.37ns
+_ifconv195:14  %sorted_weight_0_4 = select i1 %sel_tmp34, float %sorted_weight_3_3_31, float %sorted_weight_0_3
+
+ST_125: sorted_weight_0_5 [1/1] 1.37ns
+_ifconv195:15  %sorted_weight_0_5 = select i1 %sel_tmp35, float %sorted_weight_3_3_31, float %sorted_weight_0_4
+
+ST_125: sorted_weight_0_6 [1/1] 1.37ns
+_ifconv195:16  %sorted_weight_0_6 = select i1 %sel_tmp33, float %sorted_weight_3_20, float %sorted_weight_2_3
+
+ST_125: sorted_weight_0_7 [1/1] 1.37ns
+_ifconv195:17  %sorted_weight_0_7 = select i1 %sel_tmp34, float %sorted_weight_2_3, float %sorted_weight_0_6
+
+ST_125: sorted_weight_0_8 [1/1] 1.37ns
+_ifconv195:18  %sorted_weight_0_8 = select i1 %sel_tmp35, float %sorted_weight_2_3, float %sorted_weight_0_7
+
+ST_125: sorted_weight_0_9 [1/1] 1.37ns
+_ifconv195:19  %sorted_weight_0_9 = select i1 %sel_tmp34, float %sorted_weight_3_20, float %sorted_weight_1_7
+
+ST_125: sorted_weight_0_10 [1/1] 1.37ns
+_ifconv195:20  %sorted_weight_0_10 = select i1 %sel_tmp35, float %sorted_weight_1_7, float %sorted_weight_0_9
+
+ST_125: sorted_weight_0_15 [1/1] 1.37ns
+_ifconv195:21  %sorted_weight_0_15 = select i1 %sel_tmp35, float %sorted_weight_3_20, float %sorted_weight_0_14
+
+ST_125: index_0_1 [1/1] 1.37ns
+_ifconv195:22  %index_0_1 = select i1 %sel_tmp33, i32 %index_3_1, i32 %index_3_8
+
+ST_125: index_0_2 [1/1] 1.37ns
+_ifconv195:23  %index_0_2 = select i1 %sel_tmp34, i32 %index_3_1, i32 %index_0_1
+
+ST_125: index_0_3 [1/1] 1.37ns
+_ifconv195:24  %index_0_3 = select i1 %sel_tmp35, i32 %index_3_1, i32 %index_0_2
+
+ST_125: index_0_4 [1/1] 1.37ns
+_ifconv195:25  %index_0_4 = select i1 %sel_tmp33, i32 %index_3_8, i32 %index_2_1
+
+ST_125: index_0_5 [1/1] 1.37ns
+_ifconv195:26  %index_0_5 = select i1 %sel_tmp34, i32 %index_2_1, i32 %index_0_4
+
+ST_125: index_0_6 [1/1] 1.37ns
+_ifconv195:27  %index_0_6 = select i1 %sel_tmp35, i32 %index_2_1, i32 %index_0_5
+
+ST_125: index_0_8 [1/1] 1.37ns
+_ifconv195:28  %index_0_8 = select i1 %sel_tmp34, i32 %index_3_8, i32 %index_1_6
+
+ST_125: index_0_9 [1/1] 1.37ns
+_ifconv195:29  %index_0_9 = select i1 %sel_tmp35, i32 %index_1_6, i32 %index_0_8
+
+ST_125: index_0_12 [1/1] 1.37ns
+_ifconv195:30  %index_0_12 = select i1 %sel_tmp35, i32 %index_3_8, i32 %index_0_11
+
+ST_125: i_6 [1/1] 0.80ns
+_ifconv195:31  %i_6 = add i3 %i6, 1
+
+ST_125: stg_755 [1/1] 0.00ns
+_ifconv195:32  br label %.preheader192
+
+
+ <State 126>: 2.39ns
+ST_126: tmp_92 [1/1] 0.00ns
+:8  %tmp_92 = or i19 %tmp_27, 2
+
+ST_126: p_addr [1/1] 0.00ns
+:9  %p_addr = call i32 @_ssdm_op_BitConcatenate.i32.i13.i19(i13 0, i19 %tmp_92)
+
+ST_126: tmp_93 [1/1] 0.00ns
+:10  %tmp_93 = zext i32 %p_addr to i64
+
+ST_126: back_gauss_addr_6 [1/1] 0.00ns
+:11  %back_gauss_addr_6 = getelementptr [307200 x i1]* %back_gauss, i64 0, i64 %tmp_93
+
+ST_126: stg_760 [1/1] 2.39ns
+:12  store i1 false, i1* %back_gauss_addr_6, align 1
+
+ST_126: tmp_94 [1/1] 0.00ns
+:13  %tmp_94 = or i19 %tmp_27, 3
+
+ST_126: p_addr3 [1/1] 0.00ns
+:14  %p_addr3 = call i32 @_ssdm_op_BitConcatenate.i32.i13.i19(i13 0, i19 %tmp_94)
+
+ST_126: tmp_95 [1/1] 0.00ns
+:15  %tmp_95 = zext i32 %p_addr3 to i64
+
+ST_126: back_gauss_addr_7 [1/1] 0.00ns
+:16  %back_gauss_addr_7 = getelementptr [307200 x i1]* %back_gauss, i64 0, i64 %tmp_95
+
+ST_126: stg_765 [1/1] 2.39ns
+:17  store i1 false, i1* %back_gauss_addr_7, align 1
+
+ST_126: stg_766 [1/1] 1.57ns
+:18  br label %16
+
+
+ <State 127>: 6.54ns
+ST_127: B [1/1] 0.00ns
+:0  %B = phi float [ 0.000000e+00, %15 ], [ %B_1, %_ifconv268 ]
+
+ST_127: ind [1/1] 0.00ns
+:1  %ind = phi i3 [ 0, %15 ], [ %ind_1, %_ifconv268 ]
+
+ST_127: tmp_107 [1/1] 0.00ns
+:2  %tmp_107 = call i1 @_ssdm_op_BitSelect.i1.i3.i32(i3 %ind, i32 2)
+
+ST_127: ind_1 [1/1] 0.80ns
+:3  %ind_1 = add i3 %ind, 1
+
+ST_127: stg_771 [1/1] 0.00ns
+:4  br i1 %tmp_107, label %.loopexit, label %_ifconv268
+
+ST_127: tmp_109 [1/1] 0.00ns
+_ifconv268:0  %tmp_109 = trunc i3 %ind to i2
+
+ST_127: sel_tmp25 [1/1] 1.36ns
+_ifconv268:1  %sel_tmp25 = icmp eq i2 %tmp_109, 1
+
+ST_127: sorted_weight_0 [1/1] 1.37ns
+_ifconv268:2  %sorted_weight_0 = select i1 %sel_tmp25, float %sorted_weight_1_2, float %sorted_weight_3_2_27
+
+ST_127: sel_tmp26 [1/1] 1.36ns
+_ifconv268:3  %sel_tmp26 = icmp eq i2 %tmp_109, -2
+
+ST_127: sorted_weight_0_1 [1/1] 1.37ns
+_ifconv268:4  %sorted_weight_0_1 = select i1 %sel_tmp26, float %sorted_weight_2_2, float %sorted_weight_0
+
+ST_127: sel_tmp27 [1/1] 1.36ns
+_ifconv268:5  %sel_tmp27 = icmp eq i2 %tmp_109, 0
+
+ST_127: sorted_weight_0_2 [1/1] 1.37ns
+_ifconv268:6  %sorted_weight_0_2 = select i1 %sel_tmp27, float %sorted_weight_0_14, float %sorted_weight_0_1
+
+ST_127: newSel [1/1] 1.37ns
+_ifconv268:8  %newSel = select i1 %sel_tmp27, i32 %index_0_11, i32 %index_2
+
+ST_127: or_cond [1/1] 1.37ns
+_ifconv268:9  %or_cond = or i1 %sel_tmp27, %sel_tmp26
+
+ST_127: newSel1 [1/1] 1.37ns
+_ifconv268:10  %newSel1 = select i1 %sel_tmp25, i32 %index_1, i32 %index_3
+
+ST_127: index_0 [1/1] 1.37ns
+_ifconv268:11  %index_0 = select i1 %or_cond, i32 %newSel, i32 %newSel1
+
+ST_127: p_addr10 [1/1] 2.44ns
+_ifconv268:12  %p_addr10 = add i32 %p_addr6, %index_0
+
+
+ <State 128>: 7.26ns
+ST_128: B_1 [5/5] 7.26ns
+_ifconv268:7  %B_1 = fadd float %B, %sorted_weight_0_2
+
+ST_128: tmp_96 [1/1] 0.00ns
+_ifconv268:13  %tmp_96 = sext i32 %p_addr10 to i64
+
+ST_128: back_gauss_addr_8 [1/1] 0.00ns
+_ifconv268:14  %back_gauss_addr_8 = getelementptr [307200 x i1]* %back_gauss, i64 0, i64 %tmp_96
+
+ST_128: stg_787 [1/1] 2.39ns
+_ifconv268:15  store i1 true, i1* %back_gauss_addr_8, align 1
+
+
+ <State 129>: 7.26ns
+ST_129: B_1 [4/5] 7.26ns
+_ifconv268:7  %B_1 = fadd float %B, %sorted_weight_0_2
+
+
+ <State 130>: 7.26ns
+ST_130: B_1 [3/5] 7.26ns
+_ifconv268:7  %B_1 = fadd float %B, %sorted_weight_0_2
+
+
+ <State 131>: 7.26ns
+ST_131: B_1 [2/5] 7.26ns
+_ifconv268:7  %B_1 = fadd float %B, %sorted_weight_0_2
+
+
+ <State 132>: 7.26ns
+ST_132: B_1 [1/5] 7.26ns
+_ifconv268:7  %B_1 = fadd float %B, %sorted_weight_0_2
+
+
+ <State 133>: 8.16ns
+ST_133: B_1_to_int [1/1] 0.00ns
+_ifconv268:16  %B_1_to_int = bitcast float %B_1 to i32
+
+ST_133: tmp_75 [1/1] 0.00ns
+_ifconv268:17  %tmp_75 = call i8 @_ssdm_op_PartSelect.i8.i32.i32.i32(i32 %B_1_to_int, i32 23, i32 30)
+
+ST_133: tmp_110 [1/1] 0.00ns
+_ifconv268:18  %tmp_110 = trunc i32 %B_1_to_int to i23
+
+ST_133: notlhs4 [1/1] 2.00ns
+_ifconv268:19  %notlhs4 = icmp ne i8 %tmp_75, -1
+
+ST_133: notrhs5 [1/1] 2.39ns
+_ifconv268:20  %notrhs5 = icmp eq i23 %tmp_110, 0
+
+ST_133: tmp_77 [1/1] 1.37ns
+_ifconv268:21  %tmp_77 = or i1 %notrhs5, %notlhs4
+
+ST_133: tmp_78 [1/1] 6.79ns
+_ifconv268:22  %tmp_78 = fcmp oge float %B_1, 0x3FE6666660000000
+
+ST_133: tmp_79 [1/1] 1.37ns
+_ifconv268:23  %tmp_79 = and i1 %tmp_77, %tmp_78
+
+ST_133: stg_800 [1/1] 0.00ns
+_ifconv268:24  br i1 %tmp_79, label %.loopexit, label %16
+
+ST_133: stg_801 [1/1] 1.57ns
+.loopexit:0  br label %17
+
+ST_133: p_0 [1/1] 0.00ns
+:0  %p_0 = phi i1 [ false, %.loopexit ], [ true, %14 ]
+
+ST_133: stg_803 [1/1] 0.00ns
+:1  ret i1 %p_0
+
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+	State 17
+	State 18
+	State 19
+	State 20
+	State 21
+	State 22
+	State 23
+	State 24
+	State 25
+	State 26
+	State 27
+	State 28
+	State 29
+	State 30
+	State 31
+	State 32
+	State 33
+	State 34
+	State 35
+	State 36
+	State 37
+	State 38
+	State 39
+	State 40
+	State 41
+	State 42
+	State 43
+	State 44
+	State 45
+	State 46
+	State 47
+	State 48
+	State 49
+	State 50
+	State 51
+	State 52
+	State 53
+	State 54
+	State 55
+	State 56
+	State 57
+	State 58
+	State 59
+	State 60
+	State 61
+	State 62
+	State 63
+	State 64
+	State 65
+	State 66
+	State 67
+	State 68
+	State 69
+	State 70
+	State 71
+	State 72
+	State 73
+	State 74
+	State 75
+	State 76
+	State 77
+	State 78
+	State 79
+	State 80
+	State 81
+	State 82
+	State 83
+	State 84
+	State 85
+	State 86
+	State 87
+	State 88
+	State 89
+	State 90
+	State 91
+	State 92
+	State 93
+	State 94
+	State 95
+	State 96
+	State 97
+	State 98
+	State 99
+	State 100
+	State 101
+	State 102
+	State 103
+	State 104
+	State 105
+	State 106
+	State 107
+	State 108
+	State 109
+	State 110
+	State 111
+	State 112
+	State 113
+	State 114
+	State 115
+	State 116
+	State 117
+	State 118
+	State 119
+	State 120
+	State 121
+	State 122
+	State 123
+	State 124
+	State 125
+	State 126
+	State 127
+	State 128
+	State 129
+	State 130
+	State 131
+	State 132
+	State 133
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A
